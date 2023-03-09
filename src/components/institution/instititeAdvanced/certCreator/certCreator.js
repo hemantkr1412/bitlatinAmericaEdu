@@ -163,7 +163,8 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
           } 
           else{
             setisOtherselect(false);
-          }
+          } 
+          console.log(isOtherselect);
         }
         } id="draggable-variable-selector">
           Select Variables
@@ -197,7 +198,9 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
                 height: "5",
                 color: "#000000",
               },
-            ]);
+            ]);  
+            setvariableName("Other (specify)");   
+            setspecifyother("Other (specify)");
           }}
         >
           Add Variable +
@@ -210,7 +213,7 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
           value={variableName}
           onChange={(e)=>{ 
               setvariableName(e.target.value);
-              setspecifyother(e.target.value); 
+              setspecifyother(e.target.value);   
           }}
         />
         <label htmlFor="template-creater-template-name">Template Name</label>
