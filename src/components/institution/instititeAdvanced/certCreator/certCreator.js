@@ -25,10 +25,16 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
   const user = useContext(UserContext);
   const [imageWidth, setImageWidth] = useState(100);
   const [templateName, setTemplateName] = useState("");
-
+  const [variableName, setvariableName] = useState("Other (specify)");
+  const [isOtherselect, setisOtherselect] = useState(false);
+  const [specifyother, setspecifyother] = useState("Other (specify)");
   useEffect(() => {
     setImageWidth(Math.min(window.innerWidth - 100, 700));
-  }, [window]);
+    if (String(variableName).length === 0) {
+      setspecifyother("Other (specify)");
+    } 
+    
+  }, [window, variableName]);
 
   const variableOptions = [
     "Student Name",
@@ -58,6 +64,7 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
     "Issued Date",
     "Signatory Name",
     "Signatory Designation",
+    specifyother
   ];
 
   const handleNext = async () => {
@@ -93,6 +100,7 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
     });
     filereader.readAsDataURL(file);
   };
+
 
   return (
     <div
@@ -148,15 +156,24 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
           marginTop: "20px",
         }}
       >
-        <select id="draggable-variable-selector">
+        <select onChange={(e) => {
+          let selectvalue = e.target.value;
+          if (selectvalue === variableName) {
+            setisOtherselect(true);
+          } 
+          else{
+            setisOtherselect(false);
+          }
+        }
+        } id="draggable-variable-selector">
           Select Variables
           {variableOptions.map((option) => (
-            <option>{option}</option>
+            <option value={option}>{option}</option>
           ))}
         </select>
 
         <button
-          onClick={() => {
+          onClick={() => { 
             setSelectedVariables([
               ...selectedVariables,
               {
@@ -184,8 +201,18 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
           }}
         >
           Add Variable +
-        </button>
-
+        </button> 
+        <label style={{ display: `${isOtherselect ? "" : "none"}` }} htmlFor="template-creater-variable-name">Variable Name <span style={{ fontSize: "11px" }}>(Specify name)</span></label>
+        <input
+          style={{ display: `${isOtherselect ? "" : "none"}` }}
+          type="text"
+          id="template-creater-variable-name"
+          value={variableName}
+          onChange={(e)=>{ 
+              setvariableName(e.target.value);
+              setspecifyother(e.target.value); 
+          }}
+        />
         <label htmlFor="template-creater-template-name">Template Name</label>
         <input
           type="text"
