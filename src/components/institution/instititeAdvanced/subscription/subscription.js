@@ -276,7 +276,7 @@ const Subscription = ({ setView, back }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "center", 
       }}
     >
       <h1>Select a Subscription Plan</h1>
@@ -290,7 +290,7 @@ const Subscription = ({ setView, back }) => {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
-          margin: "50px 0px",
+          margin: "50px 0px", 
         }}
       >
         <PlanCard

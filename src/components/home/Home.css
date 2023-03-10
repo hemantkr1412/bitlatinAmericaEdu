@@ -1,4 +1,4 @@
-/* About section */
+/* About section */ 
 .aboutSectionContainer {
   background-image: url(./assets/aboutsectionbackground.jpg);
   background-size: cover;
@@ -218,7 +218,8 @@
 }
 .certificatesissued .heading3 {
   font-size: 100px;
-  font-weight: 600;
+  font-weight: 600; 
+
 }
 
 /* How to use Section */
@@ -694,7 +695,8 @@ letter-spacing: -0.05em;
   background: #FFFFFF;
   box-shadow: 0px 0px 20.0364px rgba(88, 1, 155, 0.5);
   border-radius: 22.1455px;
-  /* box-shadow: 0px 0px 20px 1px var(--primary); */
+  /* box-shadow: 0px 0px 20px 1px var(--primary); */ 
+  min-width: 350px
 }
 .certificatesissued2 .heading1 {
   /* font-size: 50px;

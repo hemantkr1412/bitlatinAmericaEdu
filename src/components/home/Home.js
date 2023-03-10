@@ -85,12 +85,12 @@ const Home = () => {
               </div>
             </div>
             <div className="certificatesectioncontainer2part2">
-              <div className="certificatesissued2">
+              <div  className="certificatesissued2">
                 <div className="heading1">3</div>
                 <div className="heading2">DISTINCTIONS AND AWARDS</div>
                 <div className="heading3">Badges That Certify Distinctions And Recognitions Granted By The Institution To Its Teachers Or Students. Medals Of Honor, Best Average, Sports Achievement</div>
               </div>
-              <div className="certificatesissued2">
+              <div  className="certificatesissued2">
                 <div className="heading1">4</div>
                 <div className="heading2">UNDERGRADUATE AND GRADUATE DEGREES</div>
                 <div className="heading3">Qualification Granted By The Institution To Its Students Only (School,University And Postgraduate)</div>

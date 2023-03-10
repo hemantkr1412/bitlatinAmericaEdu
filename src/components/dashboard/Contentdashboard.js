@@ -216,7 +216,7 @@ const PrimaryDetails = () => {
   
   
     return (
-      <div className="certificatesectioncontainer1">
+      <div style={{display:"flex"}} className="certificatesectioncontainer1">
         <div className="certificatesissued1">
           <div className="heading3">{200}</div>
           <div className="heading2">Total General Certificate</div>

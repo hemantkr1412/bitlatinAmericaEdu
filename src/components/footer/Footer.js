@@ -6,7 +6,7 @@ import instagramlogo from "./assets/instagramlogo.svg";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="footerborder"></div>
+      {/* <div style={{paddingTop:"20%"}} className="footerborder"></div> */}
       <div className="footercontainer">
         <div className="footerlogocontainer">
           <img
