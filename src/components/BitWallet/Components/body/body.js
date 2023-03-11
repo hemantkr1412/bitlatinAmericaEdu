@@ -219,10 +219,14 @@ const body = () => {
                             <div>
                                 <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Download Chrome extension for Desktop</p>
                             </div>
-                            <Link to="https://chrome.google.com/webstore/detail/bit-wallet/ddphokhghjkekfdoddpeffdpojdofcan" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <div  
+                            onClick={()=>{
+                                window.open("https://chrome.google.com/webstore/detail/bit-wallet/ddphokhghjkekfdoddpeffdpojdofcan");
+                            }} 
+                            className="linkstyle inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Download For
                                 <img src={chrome} alt="" className="w-8 h-8 ml-2 -mr-1" />
-                            </Link>
+                            </div>
                         </div>
                     </motion.div>
 
@@ -238,10 +242,14 @@ const body = () => {
                             <div>
                                 <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Download Ios application</p>
                             </div>
-                            <Link to="https://apps.apple.com/us/app/be-imagine-technology-wallet/id6443855034" className="inline-flex items-center px-3 py-2  text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <div  
+                            onClick={()=>{
+                                window.open("https://apps.apple.com/us/app/be-imagine-technology-wallet/id6443855034");
+                            }}
+                             className="linkstyle inline-flex items-center px-3 py-2  text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Download For
                                 <img src={apple} className="w-8 h-8 ml-2 -mr-1" />
-                            </Link>
+                            </div>
                         </div>
                     </motion.div>
                     <motion.div
@@ -256,10 +264,14 @@ const body = () => {
                             <div>
                                 <p className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Download Android Application</p>
                             </div>
-                            <Link to="https://play.google.com/store/apps/details?id=beimagine.tech" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            <div  
+                            onClick={()=>{
+                                window.open("https://play.google.com/store/apps/details?id=beimagine.tech");
+                            }}
+                             className="linkstyle inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                 Download For
                                 <img src={android} className="w-8 h-8 ml-2 -mr-1" />
-                            </Link>
+                            </div>
                         </div>
                     </motion.div>
 

@@ -1006,6 +1006,14 @@ code {
         padding-left: 1.5rem;
         padding-right: 1.5rem
     }
+} 
+
+
+.linkstyle{
+    text-decoration: underline; 
+} 
+.linkstyle:hover{
+    cursor: pointer;
 }
 
 

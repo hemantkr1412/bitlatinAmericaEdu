@@ -1,5 +1,4 @@
 import "./Footer.css";
-
 import logo from "../assets/logo.png";
 import linkedinlogo from "./assets/linkedinlogo.svg";
 import instagramlogo from "./assets/instagramlogo.svg";
@@ -44,7 +43,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="copyrightcontainer">
-        Copyright © 2022 Beyond Imagination Technologies Pvt. Ltd. All right
+        Copyright © 2023 Beyond Imagination Technologies Pvt. Ltd. All right
         reserved.
       </div>
     </div>
