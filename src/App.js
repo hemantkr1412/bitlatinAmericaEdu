@@ -19,6 +19,7 @@ import InstitutesLandingPage from "./components/institution/instititeAdvanced/la
 // context
 import UserState from "./context/userContext/userState";
 
+import Bitwallet from "./components/BitWallet/Pages/BitWallet"
 // router
 import { Route, Routes } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
@@ -41,6 +42,7 @@ function App() {
             <Route path="/privacypolicy" element={<Privacypolicy />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/approval/:orderId/:otp" element={<Approval />} />
+            <Route path="/bitwalletpage" element={<Bitwallet/>} />
           </Routes>
           <Footer />
         </UserState>

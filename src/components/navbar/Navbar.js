@@ -47,6 +47,15 @@ const Navbar = () => {
           }}
         >
           Institutions
+        </div> 
+        <div
+          className="menuitem"
+          onClick={() => {
+            navigate("/bitwalletpage");
+            setIsMenu(false);
+          }}
+        >
+          Bit Wallet
         </div>
 
         <div
@@ -57,7 +66,7 @@ const Navbar = () => {
           }}
         >
           Contact Us
-        </div>
+        </div> 
       </div>
     );
   };
@@ -72,6 +81,9 @@ const Navbar = () => {
         </div>
         <div className="navbutton" onClick={() => navigate("/institution")}>
           Institutions
+        </div> 
+        <div className="navbutton" onClick={() => navigate("/bitwalletpage")}>
+          Bit Wallet
         </div>
       </div>
       <div className="menucontainer">
@@ -118,7 +130,7 @@ const Navbar = () => {
           <div className="whitebutton">
             <button
               onClick={() => {
-                window.open("https://metamask.io");
+                navigate("/bitwalletpage");
               }}
             >
               Get Wallet
