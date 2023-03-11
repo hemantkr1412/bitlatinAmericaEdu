@@ -22,7 +22,7 @@ const NoWalletPage = () => {
       <h1 style={{ fontSize: "18px", marginTop: "30px" }}>
         A blockchain wallet is your entry to the WEB3.0 world
       </h1>
-      <h2>Learn more about metamask:</h2>
+      <h2>Learn more about BitMemoir:</h2>
       <div>
         <iframe
           src="https://www.youtube.com/embed/YDsqedqmF84"
