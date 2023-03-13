@@ -5,10 +5,12 @@ import DownloadForOfflineIcon from "@mui/icons-material/DownloadForOffline";
 import { fileDownload } from "../Scripts/tools";
 import { IconButton } from "@mui/material";
 import Chart from "react-apexcharts";
+import {useTranslation} from 'react-i18next'
 
 export const Contentdashboard = () => {
 
     const user = useContext(UserContext);
+    
     
     
     
@@ -32,36 +34,40 @@ export const Contentdashboard = () => {
 const PrimaryDetails = () => {
     const user = useContext(UserContext);
     const userData = user.userData;
-  
+    const {t} = useTranslation();
+
+    var Name=t('Dashboard.contentDashboard.name')
     const details1 = {
-      Name: userData.name,
-      Description: userData.description,
-      Email: userData.email,
-      Website: userData.website,
-      Account: userData.account,
+      [Name]: userData.name,
+      // Description: userData.description,
+      [t('Dashboard.contentDashboard.email')]: userData.email,
+      [t('Dashboard.contentDashboard.Website')]: userData.website,
+      // Account: userData.account,
+      [t('Dashboard.contentDashboard.Issuer_Name')]: userData.issuerName,
+      [t('Dashboard.contentDashboard.Issuer_Designation')]: userData.issuerDesignation,
+      
     };
     const details2 = {
-      Status:
+      [t('Dashboard.contentDashboard.Status')]:
         userData.status === "Approved"
           ? "Verified"
           : userData.status === "in_progress"
           ? "Verification Pending"
           : "Unverified",
-      "Reg. Id": userData.regId,
-      "Id Proof": (
+      [t('Dashboard.contentDashboard.IdProof')]: (
         <IconButton onClick={() => fileDownload(userData.idProof, "idProof")}>
           <DownloadForOfflineIcon color="primary" />
         </IconButton>
       ),
-      "Personal storage":
-        userData["storage_used"] + " / " + userData["storage_limit"] + " MB",
-      "Contract Address": userData["contract_address"],
+      [t('Dashboard.contentDashboard.contractAddress')]: userData["contract_address"],
+      [t('Dashboard.contentDashboard.accountAddress')]: userData["account"],
+      [t('Dashboard.contentDashboard.CurrentPlan')]: userData["nft_quota"] +" Certificates",
     };
   
     return (
       <>
         <div className='heading-primarydetails'>
-          <h2>Primary Details</h2>
+          <h2>{t('Dashboard.sidebar.PrimaryDetails')}</h2>
         </div>
         <div className="primarydatacontainer">
           <div className="userdetail">
@@ -121,7 +127,7 @@ const PrimaryDetails = () => {
             
         </div>
   
-        <div className="certContainer" id="pie">
+        {/* <div className="certContainer" id="pie">
           <React.Fragment>
             <div className="container-fuild">
                 <Chart type="pie"
@@ -145,7 +151,7 @@ const PrimaryDetails = () => {
           <h5 >Empty Storage : { userData["storage_limit"]-userData["storage_used"]} MB</h5>
         </div>
             
-        </div>
+        </div> */}
       </div>
   
   {/*     
@@ -221,16 +227,15 @@ const PrimaryDetails = () => {
           <div className="heading3">{200}</div>
           <div className="heading2">Total General Certificate</div>
         </div>
-          +
         <div className="certificatesissued1">
           <div className="heading3">{100}</div>
           <div className="heading2">Total Degree  Certificate</div>
         </div>
-          =
+          {/* =
         <div className="certificatesissued1">
           <div className="heading3">{300}</div>
           <div className="heading2">Total Certificate </div>
-        </div>
+        </div> */}
       </div>
     );
   };

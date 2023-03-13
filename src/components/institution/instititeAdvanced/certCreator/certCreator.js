@@ -15,8 +15,9 @@ import { templateApi } from "../../../Scripts/apiCalls";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import UserContext from "../../../../context/userContext/UserContext";
-
+import { useTranslation } from 'react-i18next'
 const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
+  const {t} = useTranslation()
   const [selectedImage, setSelectedImage] = useState(uploadIcon);
   const [uploadedImage, setUploadedImage] = useState(null);
   const [selectedVariables, setSelectedVariables] = useState([]);
@@ -25,10 +26,17 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
   const user = useContext(UserContext);
   const [imageWidth, setImageWidth] = useState(100);
   const [templateName, setTemplateName] = useState("");
+  const [variableName, setvariableName] = useState(t('Institutions.certCreator.CustomVariable'));
+  const [isOtherselect, setisOtherselect] = useState(false);
+  const [specifyother, setspecifyother] = useState(t('Institutions.certCreator.CustomVariable'));
 
   useEffect(() => {
     setImageWidth(Math.min(window.innerWidth - 100, 700));
-  }, [window]);
+    if (String(variableName).length === 0) {
+      setspecifyother("Other (specify)");
+    } 
+
+  }, [window, variableName]);
 
   const variableOptions = [
     "Student Name",
@@ -58,8 +66,13 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
     "Issued Date",
     "Signatory Name",
     "Signatory Designation",
+    specifyother,
   ];
-
+  
+  const variableOptions2 =t('Institutions.certCreator.variableOptions',{returnObjects: true})
+  variableOptions2.push(specifyother)
+  // const myArray = JSON.parse(variableOptions2)
+  console.log(JSON.stringify(variableOptions2))
   const handleNext = async () => {
     setIsLoading(true);
     await templateApi({
@@ -105,7 +118,7 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
       }}
       id="tempate-creater-container"
     >
-      <h2>Template Creator</h2>
+      <h2>{t('Institutions.certCreator.heading')}</h2>
       <input
         type="file"
         id="image-selector"
@@ -148,10 +161,23 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
           marginTop: "20px",
         }}
       >
-        <select id="draggable-variable-selector">
-          Select Variables
-          {variableOptions.map((option) => (
-            <option>{option}</option>
+        <select id="draggable-variable-selector" 
+        onChange={(e) => {
+          let selectvalue = e.target.value;
+          if (selectvalue === variableName) {
+            setisOtherselect(true);
+          } 
+          else{
+            setisOtherselect(false);
+          } 
+          console.log(isOtherselect);
+        }
+        }
+        >
+         {t('Institutions.certCreator.selectVariable')}
+          {variableOptions2.map((option) => (
+            // <option>{option}</option>
+            <option value={option}>{option}</option>
           ))}
         </select>
 
@@ -181,12 +207,25 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
                 color: "#000000",
               },
             ]);
+            setvariableName("Other (specify)");   
+            setspecifyother("Other (specify)");
           }}
         >
-          Add Variable +
+          {t('Institutions.certCreator.addVariable')} +
         </button>
+        <label style={{ display: `${isOtherselect ? "" : "none"}` }} htmlFor="template-creater-variable-name">Variable Name <span style={{ fontSize: "11px" }}>(Specify name)</span></label>
+        <input
+          style={{ display: `${isOtherselect ? "" : "none"}` }}
+          type="text"
+          id="template-creater-variable-name"
+          value={variableName}
+          onChange={(e)=>{ 
+              setvariableName(e.target.value);
+              setspecifyother(e.target.value);   
+          }}
+        />
 
-        <label htmlFor="template-creater-template-name">Template Name</label>
+        <label htmlFor="template-creater-template-name">{t('Institutions.certCreator.templateName')}</label>
         <input
           type="text"
           id="template-creater-template-name"
@@ -200,7 +239,7 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
             handleNext();
           }}
         >
-          Next {">"}
+          {t('Institutions.certCreator.next')}{">"}
         </button>
       </div>
       {isLoading && <LoadingPage />}
