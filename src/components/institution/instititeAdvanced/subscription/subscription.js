@@ -20,7 +20,8 @@ const Subscription = ({ setView, back }) => {
     duration: "1 month",
     amount: 999,
   });
-  const user = useContext(UserContext);
+  const user = useContext(UserContext); 
+  const { t } = useTranslation()
 
   const checkNetwork = async (network) => {
     const myProvider = new ethers.providers.Web3Provider(window.ethereum);
