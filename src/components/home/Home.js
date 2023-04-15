@@ -11,7 +11,8 @@ import step7 from "./assets/step7.png";
 import React from "react";
 import { useTranslation } from 'react-i18next'
 import i18next from 'i18next'
-import cookies from 'js-cookie'
+import cookies from 'js-cookie' 
+import Card from "./Card";
 
 const Home = () => {
 
@@ -238,47 +239,29 @@ const Home = () => {
       {/* Join  */}
       <div className="joinContainer">
         <div className="joinContainerHeading">
-        {t("Home.container5.heading")}
+          {t("Home.container5.heading")}
         </div>
         <div className="joinMainDiv">
-          <div className="join">
-            <div className="joinheading">
-            <div className="joiningfee"> <sup className="dollar">$</sup>1.00
-              <p className="permonth">{t("Home.container5.box.per_month")}</p>
-            </div>
-            </div>
-            <div className="joinheading2">
-              <div className="subjoinheading2">
-              {t("Home.container5.box.heading")} <br/> {t("Home.container5.box.heading2")}
-              </div>
-              <button className="joinbtn">{t("Home.container5.box.buy-btn")}</button>
-            </div>
+          <div style={{ border: "0%",height:"400px" }} className="join">
+            <Card
+              heading={"Silver Plan"}
+              Certificates={t("Home.price.offer1")} 
+              price={"2"}
+            />
           </div>
-          <div className="join">
-            <div className="joinheading">
-            <div className="joiningfee"> <sup className="dollar">$</sup>1.00
-              <p className="permonth">{t("Home.container5.box.per_month")}</p>
-            </div>
-            </div>
-            <div className="joinheading2">
-              <div className="subjoinheading2">
-              {t("Home.container5.box.heading")}<br/> {t("Home.container5.box.heading2")}
-                </div>
-                <button className="joinbtn">{t("Home.container5.box.buy-btn")}</button>
-              </div>
+          <div style={{ border: "0%",height:"400px" }} className="join">
+            <Card
+              heading={"Gold Plan"}
+              Certificates={t("Home.price.offer2")} 
+              price={"1.75"}
+            />
           </div>
-          <div className="join">
-            <div className="joinheading">
-            <div className="joiningfee"> <sup className="dollar">$</sup>1.00
-              <p className="permonth">{t("Home.container5.box.per_month")}</p>
-            </div>
-            </div>
-            <div className="joinheading2">
-              <div className="subjoinheading2">
-              {t("Home.container5.box.heading")} <br/> {t("Home.container5.box.heading2")}
-                </div>
-                <button className="joinbtn">{t("Home.container5.box.buy-btn")}</button>
-              </div>
+          <div style={{ border: "0%",height:"400px" }} className="join">
+            <Card
+              heading={"Platinum Plan"}
+              Certificates={t("Home.price.offer3")} 
+              price={"1.5"}
+            />
           </div>
         </div>
       </div>
