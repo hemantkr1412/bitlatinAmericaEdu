@@ -1,4 +1,5 @@
 import "./Home.css";
+import "./card.css";
 import img1 from "./assets/img1.png";
 import arraow from "./assets/Line 2.png";
 import step1 from "./assets/step1.png";
@@ -270,3 +271,4 @@ const Home = () => {
 };
 
 export default Home;
+
