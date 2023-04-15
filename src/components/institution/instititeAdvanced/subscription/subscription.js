@@ -7,6 +7,9 @@ import { paymentApi } from "../../../Scripts/apiCalls";
 import UserContext from "../../../../context/userContext/UserContext";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
+import Card from "../../../home/Card";
+import { useTranslation } from 'react-i18next'
+import i18next from 'i18next'
 
 const Subscription = ({ setView, back }) => {
   const [isBuying, setIsBuying] = useState(false);
@@ -112,74 +115,81 @@ const Subscription = ({ setView, back }) => {
     duration,
   }) => {
     return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          border: "1px solid black",
-          borderRadius: "20px",
-          background: "var(--secondary)",
-          color: "var(--primary)",
-          width: "300px",
-          transform: isRecommended ? "scale(1.1)" : "none",
-          boxShadow: "10px 10px 10px 5px rgba(0, 0, 0, 0.5) ",
-        }}
-      >
-        <div
-          style={{
-            background: "var(--primary)",
-            color: "var(--secondary)",
-            width: "100%",
-            borderRadius: "20px 20px 0px 0px",
-          }}
-        >
-          <h1>{planName}</h1>
-        </div>
-        <div style={{ fontSize: "50px" }}>{noOfCerts}</div>
-        <div style={{ fontSize: "25px" }}>CERTIFICATES</div>
+      // <div
+      //   style={{
+      //     display: "flex",
+      //     flexDirection: "column",
+      //     textAlign: "center",
+      //     alignItems: "center",
+      //     justifyContent: "center",
+      //     border: "1px solid black",
+      //     borderRadius: "20px",
+      //     background: "var(--secondary)",
+      //     color: "var(--primary)",
+      //     width: "300px",
+      //     transform: isRecommended ? "scale(1.1)" : "none",
+      //     boxShadow: "10px 10px 10px 5px rgba(0, 0, 0, 0.5) ",
+      //   }}
+      // >
+      //   <div
+      //     style={{
+      //       background: "var(--primary)",
+      //       color: "var(--secondary)",
+      //       width: "100%",
+      //       borderRadius: "20px 20px 0px 0px",
+      //     }}
+      //   >
+      //     <h1>{planName}</h1>
+      //   </div>
+      //   <div style={{ fontSize: "50px" }}>{noOfCerts}</div>
+      //   <div style={{ fontSize: "25px" }}>CERTIFICATES</div>
 
-        <div
-          style={{
-            background: "var(--primary)",
-            color: "var(--secondary)",
-            width: "100%",
-          }}
-        >
-          <h1>{amount} $</h1>
-          <h3>Valid :{duration}</h3>
-        </div>
+      //   <div
+      //     style={{
+      //       background: "var(--primary)",
+      //       color: "var(--secondary)",
+      //       width: "100%",
+      //     }}
+      //   >
+      //     <h1>{amount} $</h1>
+      //     <h3>Valid :{duration}</h3>
+      //   </div>
 
-        <div
-          style={{
-            display: "flex",
-            margin: "20px 0px",
-          }}
-        >
-          <Button
-            sx={{
-              background: "var(--primary)",
-              color: "var(--secondary)",
-              display: "flex",
-              width: "200px",
-              borderRadius: "40px",
-              fontSize: "20px",
-            }}
-            onClick={() => {
-              setIsBuying(true);
-              setSelectedPlan({
-                planName: planName,
-                noOfCerts: noOfCerts,
-                amount: amount,
-                duration: duration,
-              });
-            }}
-          >
-            Buy now
-          </Button>
-        </div>
+      //   <div
+      //     style={{
+      //       display: "flex",
+      //       margin: "20px 0px",
+      //     }}
+      //   >
+      //     <Button
+      //       sx={{
+      //         background: "var(--primary)",
+      //         color: "var(--secondary)",
+      //         display: "flex",
+      //         width: "200px",
+      //         borderRadius: "40px",
+      //         fontSize: "20px",
+      //       }}
+      //       onClick={() => {
+      //         setIsBuying(true);
+      //         setSelectedPlan({
+      //           planName: planName,
+      //           noOfCerts: noOfCerts,
+      //           amount: amount,
+      //           duration: duration,
+      //         });
+      //       }}
+      //     >
+      //       Buy now
+      //     </Button>
+      //   </div>
+      // </div> 
+      <div style={{ border: "0%", height: "400px", background: "transparent" , marginTop:"-20px" }} className="join">
+        <Card
+          heading={"Gold Plan"}
+          Certificates={t("Home.price.offer2")}
+          price={"1.75"}
+        />
       </div>
     );
   };
