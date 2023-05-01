@@ -13,6 +13,7 @@ import Dashboard from "./components/dashboard/dashboard";
 import InstitutesLandingPage from "./components/institution/instititeAdvanced/landingPage/landing";
 import Body from "./components/BitWallet/Components/body/body";
 import DNFTLandingPage from "./components/dNFT/landingPage/landing";
+import IndividualLandingPage from "./components/dNFT/landingPage/IndividualLandingPage";
 import { Whitepaper } from "./components/about/whitepaper";
 import { Tokenomics } from "./components/about/Tokenomics";
 import { Roadmap } from "./components/about/Roadmap";
@@ -53,6 +54,7 @@ function App() {
               element={<VerifyWithDetails />}
             />
             <Route path="/dnft" element={<DNFTLandingPage />} />
+            <Route path="/individualdnft" element={<IndividualLandingPage />} />
             <Route path="/whitepapper" element={<Whitepaper/>} />
             <Route path="/tokenomics" element={<Tokenomics />} />
             <Route path="/roadmap" element={<Roadmap />} />
