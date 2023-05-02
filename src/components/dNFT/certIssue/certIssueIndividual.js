@@ -86,7 +86,7 @@ const CertIssueIndividual = ({ category, setCategory, }) => {
     setIsLoading(true);
     setStatus("Issuing certificates...");
     dNFtForStudent({
-      request_type: "create_batch",
+      request_type: "create_individual",
       account: user.userAccount,
       name: walletaddress,
       description: batchDescription,

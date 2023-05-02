@@ -403,7 +403,7 @@ const Individualdnft = () => {
                   onClick={() => {
                     setStatus("Updating Batch....");
                     dNFtForStudent({
-                      request_type: "update",
+                      request_type: "update_nft",
                       account: user.userAccount,
                       batch_id: selectedBatch.id,
                       nft_image: nft_image,
