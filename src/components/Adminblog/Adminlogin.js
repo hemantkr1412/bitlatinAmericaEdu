@@ -92,7 +92,7 @@ const Adminlogin = () => {
                             style={{
                                 display: "block",
                                 marginBottom: "0.5rem",
-                                color: "black",
+                                color: "white",
                                 fontSize: "0.875rem",
                                 lineHeight: "1.25rem",
                                 fontWeight: "500"
