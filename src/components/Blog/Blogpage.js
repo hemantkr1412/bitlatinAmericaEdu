@@ -187,11 +187,7 @@ const Blogpage = () => {
                 </div>
             </div>
             <div 
-            style={{
-                marginBottom: "1rem",
-                margin:"auto",
-                marginLeft:"700px"
-            }}
+            className='pagination'
             >
                 <Pagination count={page} color="primary" />
             </div>
