@@ -150,10 +150,13 @@ const Navbar = () => {
         >
           {t("Navbar.OurPartners")}
         </div>
-        <div className="menuitem">
-          <a href="https://www.bitindiaofficial.tech/services-9" target="_blank" rel="noreferrer">
-            Press Room
-          </a>
+        <div className="menuitem"
+          onClick={() => {
+            navigate("/blogs");
+            setIsMenu(false);
+          }}
+        >
+          Blogs
         </div>
       </div>
     );
