@@ -3,7 +3,9 @@ import { useEffect, useContext } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useNavigate } from "react-router-dom";
-const AdminUpload2 = () => {
+import { useParams } from 'react-router-dom';
+const EditBlog = () => {
+    const { id } = useParams();
     const [state, setState] = useState({ value: null });
     const navigate = useNavigate();
     const [topimagefile, settopimagefile] = useState();
@@ -125,16 +127,17 @@ const AdminUpload2 = () => {
         bodyContent.append("author_id", `${items.user_id}`);
         bodyContent.append("heading_image", topimagefile);
 
-        let response = await fetch("https://bitmemoir.org/posts/create/", {
-            method: "POST",
+        let response = await fetch(`https://bitmemoir.org/posts/${id}/edit/`, {
+            method: "PUT",
             body: bodyContent,
-            headers: headersList
+            headers: headersList,
+            redirect: 'follow'
         });
 
         if (response.ok === true) {
             let data = await response.text();
             console.log(data);
-            alert("Post Added Successfully");
+            alert("Post Updated Successfully");
             navigate("/blogs");
             window.localStorage.removeItem('blogdata');
         } else {
@@ -157,10 +160,36 @@ const AdminUpload2 = () => {
         },
     }), []);
 
+        const [blogdata, setblogdata] = useState({
+        title: "",
+        content: "",
+        topimage: null,
+        imagelinks: []
+
+    });
+    const fetchdetails = async () => {
+
+        let response = await fetch(`https://bitmemoir.org/posts/${id}/`, {
+            method: "GET",
+        });
+
+        let data = await response.text();
+        data = JSON.parse(data);
+        // console.log(data);
+        setblogdata(data);
+        settitle(data.title);
+        setState({ value: data.content });
+        settopimagefile(data.heading_image);
+    }
+    useEffect(() => {
+        fetchdetails();
+
+    }, []);
+
     return (
         <div>
             <div style={{ color: "white", textAlign: "center", fontSize: "30px", fontWeight: "600" }} className="">
-                Add Post
+                Edit Post
             </div>
             <div style={{ display: "block", minWidth: "100%", background: "white" }} className="verifypage">
                 <form style={{ marginLeft: "auto", marginRight: "auto", width: "40%", paddingTop: "3%" }}>
@@ -198,9 +227,25 @@ const AdminUpload2 = () => {
                             }}
                             placeholder="name@flowbite.com"
                             required=""
+                            value={title}
                         />
                     </div>
                     <div>
+                        <label
+                            style={
+                                {
+                                    display: "block",
+                                    marginBottom: "0.5rem",
+                                    color: "black",
+                                    fontSize: "0.875rem",
+                                    lineHeight: "1.25rem",
+                                    fontWeight: "500"
+                                }
+                            }
+                            >
+                                current Image
+                        </label>
+                        <img src={blogdata.heading_image} style={{ width: "100%", height: "auto" }} />
                         <label
                             style={{
                                 display: "block",
@@ -211,7 +256,7 @@ const AdminUpload2 = () => {
                                 fontWeight: "500"
                             }}
                         >
-                            Upload Top Image
+                            Upload Blog Thumbnail(required*) If N/A then upload current image
                         </label>
                         <input
                             type="file"
@@ -229,6 +274,7 @@ const AdminUpload2 = () => {
                                 borderColor: "#D1D5DB",
                             }}
                             required=""
+                            
                         />
                     </div>
                 </form>
@@ -249,4 +295,4 @@ const AdminUpload2 = () => {
     )
 }
 
-export default AdminUpload2;
+export default EditBlog;

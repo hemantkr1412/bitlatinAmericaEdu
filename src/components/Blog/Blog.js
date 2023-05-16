@@ -7,7 +7,7 @@ const Blog = () => {
     const [blogdata, setblogdata] = useState(null);
     const fetchdetails = async () => {
 
-        let response = await fetch(`http://127.0.0.1:8000/posts/${id}/`, {
+        let response = await fetch(`https://bitmemoir.org/posts/${id}/`, {
             method: "GET",
         });
 
@@ -20,7 +20,7 @@ const Blog = () => {
     }, [])
 
     return (
-        <>
+        <div className='verifypage2'>
 
             {
                 blogdata === null ?
@@ -43,13 +43,15 @@ const Blog = () => {
                         style={{
                             display: "flex",
                             paddingTop: "1rem",
-                            backgroundColor: "#ffffff",
                             flexDirection: "column",
                             alignItems: "center",
                             borderRadius: "0.5rem",
                             borderWidth: "1px",
                             borderColor: "#E5E7EB",
-                            boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+                            // boxShadow: "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+                            backgroundColor:"white",
+                            color:"black",
+                            maxWidth:"1000px"
                         }}
                         className='blogcontent'
                     >
@@ -64,7 +66,7 @@ const Blog = () => {
                                 borderTopRightRadius: "0.5rem",
                             }}
                             className="blogimg"
-                            src={`http://127.0.0.1:8000${blogdata.heading_image}`}
+                            src={blogdata.heading_image}
                             alt=""
                         />
                         <div style={{
@@ -81,7 +83,7 @@ const Blog = () => {
                     </div>
             }
 
-        </>
+        </div>
     )
 }
 

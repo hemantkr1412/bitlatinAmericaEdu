@@ -40,6 +40,7 @@ const DNFTMainPage = () => {
   const [qrYPos, setQrYPos] = useState(10);
   const { t } = useTranslation();
   const [isBatchList, setIsBatchList] = useState(true);
+  const [isUpdate, setIsUpdate] = useState(false);
 
   useEffect(() => {
     setImageWidth(Math.min(window.innerWidth - 100, 700));
@@ -77,7 +78,7 @@ const DNFTMainPage = () => {
         console.log(err);
         window.location.reload();
       });
-  }, []);
+  }, [isUpdate]);
 
   const navbuttons = [
     {
@@ -412,6 +413,7 @@ const DNFTMainPage = () => {
                       .then((res) => {
                         console.log("---------------------------------------");
                         console.log(res);
+                        setIsUpdate(true);
 
                         setStatus("Batch Updated Successfully");
                         alert("Batch Updated Successfully");

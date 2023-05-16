@@ -14,7 +14,7 @@ const Adminlogin = () => {
         bodyContent.append("username", username);
         bodyContent.append("password", password);
 
-        let response = await fetch("http://127.0.0.1:8000/api/login/", {
+        let response = await fetch("https://bitmemoir.org/api/login/", {
             method: "POST",
             body: bodyContent,
         });
@@ -71,7 +71,7 @@ const Adminlogin = () => {
                                 display: "block",
                                 padding: "0.625rem",
                                 backgroundColor: "#F9FAFB",
-                                color: "black",
+                                color: "white",
                                 fontSize: "0.875rem",
                                 lineHeight: "1.25rem",
                                 width: "100%",

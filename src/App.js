@@ -20,10 +20,12 @@ import { Team } from "./components/about/Team";
 import { Partners } from "./components/about/Partner";
 import IndividualLandingPage from "./components/dNFT/landingPage/IndividualLandingPage";
 import Blogpage from "./components/Blog/Blogpage";
+import BlogpageAdmin from "./components/Adminblog/AdminBlog";
 import Blog from "./components/Blog/Blog";
+import EditBlog from "./components/Adminblog/EditBlog";
 import Adminlogin from "./components/Adminblog/Adminlogin";
 // import Aboutus from "./components/about/Aboutus"; 
-import AdminUpload from "./components/Adminblog/AdminUpload";
+import FormikRichText from "./components/Adminblog/FormikRichText";
 // import BitWallet from "./components/BitWallet/Pages/BitWallet"
 import Verify from "./components/verify/verify";
 import VerifyWithDetails from "./components/verify/verifyWithDetails";
@@ -72,7 +74,9 @@ function App() {
             <Route path="/blogs/:id" element={<Blog />} />
             <Route path="/blog/adminlogin" element={<Adminlogin />} />
             <Route path="/blog/adminUpload" element={<Protected><AdminUpload2 /></Protected>} />
-            <Route path="/individualdnft" element={<Tokenomics />} />
+            <Route path="/individualdnft" element={<IndividualLandingPage />} />
+            <Route path="/blog/admin" element={<Protected><BlogpageAdmin /></Protected>} />
+            <Route path="/editblog/:id" element={<Protected><EditBlog /></Protected>} />
           </Routes>
           <Footer />
         </UserState>

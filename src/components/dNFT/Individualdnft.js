@@ -47,6 +47,7 @@ const Individualdnft = () => {
   const { t } = useTranslation();
   const [individuallst, setIndividuallst] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
+  const [token_id, setToken_id] = useState("");
 
   useEffect(() => {
     setImageWidth(Math.min(window.innerWidth - 100, 700));
@@ -154,12 +155,12 @@ const Individualdnft = () => {
           style={{
             backgroundColor: "var(--darkshade1)",
             height: window.innerHeight - 50 + "px",
-            width:
-              category === "Update NFT"
-                ? isSidebar
-                  ? sidebarWidth
-                  : "0px"
-                : "0px",
+            width: "0px",
+              // category === "Update NFT"
+              //   ? isSidebar
+              //     ? sidebarWidth
+              //     : "0px"
+              //   : "0px",
             overflowY: "scroll",
           }}
         >
@@ -175,7 +176,7 @@ const Individualdnft = () => {
             <h4>NFT List</h4>
           </div>
 
-          {category == "Update NFT" && (
+          {category === "Update NFT" && (
             <div
               className="educationnavbutton"
               style={{
@@ -520,9 +521,41 @@ const Individualdnft = () => {
             <div>
               <h2>Update NFT</h2>
               {selectednft.wallet_address === "" ? (
-                <h3>Please Select NFT.......</h3>
+                <div>
+                  <h3>Please Select NFT.......</h3>
+                  <label htmlFor="inputtokenid">Token ID</label>
+                  <input type="number" placeholder="Token ID" id="inputtokenid" value={token_id} onChange={ (e)=> setToken_id(e.target.value)}/>
+                  <button style={{
+                    marginTop: "20px",
+                  }}
+                  onClick={()=>{
+                    setStatus("Searching NFT....");
+                    // let token_id = document.getElementById("inputtokenid").value();
+                    console.log(token_id);
+                    individuallst.forEach((element) => {
+                      if(element.token_id == token_id){
+                        setSelectednft(element);
+                      }
+                      selectednft.wallet_address === "" && setStatus("NFT Not Found") ;
+                    }
+                    );
+
+                  }}
+                  >Search</button>
+                  <p>{status}</p>
+                </div>
               ) : (
                 <div>
+                  <button onClick={() => {setSelectednft({    
+                    wallet_address: "",
+                    description: "",
+                    id: "",
+                    batch_nft_image: "",});
+                    setStatus("");
+                  }
+                    }>
+                    Select Another NFT
+                  </button>
                   <h4>Wallet Address : {selectednft.wallet_address}</h4>
                   {/* <h4>Batch Description : {individuallst.description}</h4> */}
                   <h4> Current Batch Image : </h4>
@@ -534,7 +567,7 @@ const Individualdnft = () => {
                     }}
                   >
                     <img
-                      src={"http://localhost:8000"+selectednft.nft_image}
+                      src={selectednft.nft_image}
                       alt="Batch Image"
                       width={imageWidth}
                     />
@@ -632,10 +665,10 @@ const Individualdnft = () => {
                             "---------------------------------------"
                           );
                           console.log(res);
-                          // setStatus("Batch Updated Successfully");
+                          setStatus("NFT Updated Successfully");
                           setIsLoading(false);
                           setIsUpdate(true);
-                          alert("Batch Updated Successfully");
+                          alert("NFT Updated Successfully");
                           setSelectednft({
                             wallet_address: "",
                             description: "",
@@ -657,7 +690,7 @@ const Individualdnft = () => {
                   >
                     Update
                   </button>
-                  <p>{status}</p>
+                  {/* <p>{status}</p> */}
                 </div>
               )}
             </div>
@@ -728,7 +761,7 @@ const StudentsView = (students) => {
           <div>{student.is_minted ? student.token_id : "-"}</div>
           <div>
             {student.is_minted ? (
-              <OpenInNewIcon onClick={() => window.open("http://localhost:8000"+student.nft_image)} />
+              <OpenInNewIcon onClick={() => window.open(student.nft_image)} />
             ) : (
               "-"
             )}

@@ -1,3 +1,6 @@
+.home{
+  background-color: var(--secondary);
+}
 /* About section */
 .aboutSectionContainer {
   background-image: url(./assets/aboutsectionbackground.jpg);
@@ -535,7 +538,7 @@
 .whybitcontainer {
   display: flex;
   flex-direction: column;
-  margin: 20px 0px;
+  /* margin: 20px 0px; */
   background-image: url(./assets/stepbackground.png);
   background-repeat: no-repeat;
   background-position: center center;
@@ -1124,11 +1127,12 @@
 }
 
 .faqNews {
-  width: 50px;
+  width: 45px;
   height: 100px;
-  background-color: white;
+  background-color: rgb(119, 6, 218);
   padding: 5px;
   position: relative;
+  border-radius: 10px;
 }
 
 .faqNews img {
@@ -1136,9 +1140,9 @@
 }
 
 .socialmedia {
-  width: 50px;
+  width: 45px;
   padding: 5px;
-  height: 230px;
+  height: 250px;
   border: 1px;
   border-radius: 10px;
   background-color: rgb(119, 6, 218);
@@ -1244,6 +1248,7 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
+    background-color: var(--secondary);
     /* padding: 100px 0px; */
   }
 
@@ -1328,6 +1333,7 @@
 
   .stepsHeading {
     margin-top: 50px;
+    background-color: var(--secondary);
   }
 
   .whybitmemotext {
@@ -1355,6 +1361,7 @@
     align-items: center;
     margin: 0px;
     padding: 0px;
+    background-color: var(--secondary);
   }
 
   .aboutsection .mainheading {

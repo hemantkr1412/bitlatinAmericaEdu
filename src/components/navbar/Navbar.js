@@ -160,14 +160,14 @@ const Navbar = () => {
   };
   return (
     <div className="navbar">
-      <div className="navbuttoncontainer">
-        <div className="logocontainer">
+      <div className="logocontainer">
           <img
             src={logo}
             alt="BEYOND IMAGINATION TECHNOLOGIES"
             onClick={() => navigate("/home")}
           />
-        </div>
+      </div>
+      <div className="navbuttoncontainer">
         <div style={{ marginTop: "auto", marginBottom: "auto" }} className="navbutton" onClick={() => navigate("/view")}>
           {t("Navbar.View")}
         </div>
@@ -178,20 +178,21 @@ const Navbar = () => {
           <div class="dropdown">
             <Button class="dropbtn">dNFT</Button>
             <div class="dropdown-content">
-              <a onClick={() => navigate("/dnft")}>Batch dNFT</a>
-              <a onClick={() => navigate("/individualdnft")}>Individual dNFT</a>
+              <a onClick={() => navigate("/dnft") }>Batch dNFT</a>
+              {/* <hr/> */}
+              <a onClick={() => navigate("/individualdnft") }>Individual dNFT</a>
             </div>
           </div>
         </div>
         <div style={{ marginTop: "auto", marginBottom: "auto" }} className="navbutton" onClick={() => navigate("/verify")}>
           {t("Navbar.Verify")}
         </div>
-        <div style={{ marginTop: "auto", marginBottom: "auto" }} className="navbutton" onClick={() => navigate("/blogs")}>
-          {t("Blog")}
-        </div>
         <div style={{ marginTop: "auto", marginBottom: "auto" }} className="navbutton" onClick={() => navigate("/bitwalletpage")}>
           {t("BitWallet")}
         </div>
+        {/* <div style={{ marginTop: "auto", marginBottom: "auto" }} className="navbutton" onClick={() => navigate("/blogs")}>
+          {t("Blog")}
+        </div> */}
         {/* <div style={{ marginTop: "auto", marginBottom: "auto" }} className="navbutton" onClick={() => navigate("/partners")}>
           {t("Navbar.OurPartners")}
         </div> */}
@@ -228,47 +229,52 @@ const Navbar = () => {
             <MenuItem value={'pt'}>Português</MenuItem>
           </Select> */}
           <div class="dropdown">
-            <BiGlobe className="dropbtn" style={{ fontSize: "1.5rem" }} />
-            <div class="dropdown-content">
-              <MenuItem
+            <BiGlobe className="dropbtn2" style={{ fontSize: "2rem" }} />
+            <div class="dropdown-content2">
+              <a
                 onClick={() => {
                   handleChange('en');
                 }}
-                value={'en'}>English</MenuItem>
-              <MenuItem
+                value={'en'}>English</a>
+              <a
                 onClick={() => {
                   handleChange('sp');
                 }}
-                value={'sp'}>Español</MenuItem>
-              <MenuItem
+                value={'sp'}>Español</a>
+              <a
                 onClick={() => {
                   handleChange('pt');
                 }}
-                value={'pt'}>Português</MenuItem>
+                value={'pt'}>Português</a>
             </div>
           </div>
         </div>
         <div className="contactusbutton">
           <div className="dropdown">
             <button className="">{t("Navbar.AboutUs")}</button>
-            <div class="dropdown-content"> 
-            <a href="https://www.bitmemoir.com/#/whitepapper">
-            <MenuItem
-                onClick={() => {
-                  
-                }}
-              >BitMemoir</MenuItem>
-            </a>
-              <MenuItem
+            <div class="dropdown-content3"> 
+              <a 
+              href="https://www.bitmemoir.com/"
+                // onClick={() => {
+                //   navigate("/about");
+                // }}
+              >BitMemoir</a>
+            
+              <a
                 onClick={() => {
                   navigate("/partners");
                 }}
-              >{t("Navbar.OurPartners")}</MenuItem>
-              <MenuItem
+              >{t("Navbar.OurPartners")}</a>
+              <a 
+               onClick={() => {
+                navigate("/blogs");
+              }}
+              >{t("Blog")}</a>
+              <a
                 onClick={() => {
                   navigate("/contact")
                 }}
-              >{t("Navbar.Contact_Us")}</MenuItem>
+              >{t("Navbar.Contact_Us")}</a>
             </div>
           </div>
         </div>

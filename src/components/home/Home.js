@@ -60,7 +60,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="home">
       {/* About Section ------------------- */}
       <div className="aboutSectionContainer">
         <Segment
@@ -68,7 +68,7 @@ const Home = () => {
           style={{
             position: "fixed",
             right: "0px",
-            bottom: "50%",
+            bottom: "46%",
             zIndex: "1000",
           }}
         >
@@ -114,7 +114,7 @@ const Home = () => {
               <img
                 src={Insta}
                 alt="FAQLogo"
-                style={{ width: "40px", height: "40px" }}
+                style={{ width: "50px", height: "50px" }}
               />
             </a>
             <hr />
@@ -423,7 +423,9 @@ const Home = () => {
               </div>
               <div className="steptext">{t("Home.container4.step4.text")}</div>
             </div>
-            <div className="step">
+          </div>
+          <div className="stepscontainer2">
+          <div className="step">
               <div className="stepimg">
                 <img src={step4} alt="step4" />
               </div>
@@ -432,8 +434,6 @@ const Home = () => {
               </div>
               <div className="steptext">{t("Home.container4.step5.text")}</div>
             </div>
-          </div>
-          <div className="stepscontainer2">
             <div className="step">
               <div className="stepimg">
                 <img src={step5} alt="step5" />
@@ -526,7 +526,7 @@ const Home = () => {
           ></TabPanel>
         </Box>
       </div>
-    </>
+    </div>
   );
 };
 
