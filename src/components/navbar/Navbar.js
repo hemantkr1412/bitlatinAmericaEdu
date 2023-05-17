@@ -156,7 +156,7 @@ const Navbar = () => {
             setIsMenu(false);
           }}
         >
-          Blogs
+          {t("Navbar.Blog")}
         </div>
       </div>
     );
@@ -181,9 +181,9 @@ const Navbar = () => {
           <div class="dropdown">
             <Button class="dropbtn">dNFT</Button>
             <div class="dropdown-content">
-              <a onClick={() => navigate("/dnft") }>Batch dNFT</a>
+              <a onClick={() => navigate("/dnft") }>{t("Navbar.BatchdNFT")}</a>
               {/* <hr/> */}
-              <a onClick={() => navigate("/individualdnft") }>Individual dNFT</a>
+              <a onClick={() => navigate("/individualdnft") }>{t("Navbar.individualdNFT")}</a>
             </div>
           </div>
         </div>
@@ -272,7 +272,7 @@ const Navbar = () => {
                onClick={() => {
                 navigate("/blogs");
               }}
-              >{t("Blog")}</a>
+              >{t("Navbar.blog")}</a>
               <a
                 onClick={() => {
                   navigate("/contact")

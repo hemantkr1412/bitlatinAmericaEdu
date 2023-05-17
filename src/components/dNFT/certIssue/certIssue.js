@@ -97,8 +97,8 @@ const CertIssue = ({ category, setCategory,setIsBatchCreator }) => {
     })
       .then((res) => {
         if (res === "issued") {
-          setStatus("Dynamic certificates issued successfully.");
-          alert("Dynamic certificates issued successfully.");
+          setStatus(t("dNFT.dynamicIssuedSucessfully"));
+          alert(t("dNFT.dynamicIssuedSucessfully"));
           // alert("Order has been submitted Please check in Few Minute.");
           // window.location.reload();
         } else if (res === "pending approval") {
@@ -137,31 +137,31 @@ const CertIssue = ({ category, setCategory,setIsBatchCreator }) => {
         justifyContent: "center",
       }}
     >
-      <h2>Create Your Batch</h2>
+      <h2>{t("dNFT.createYourBatch")}</h2>
 
       <div style={{ width: "500px" }}>
-        <label htmlFor="cert-number-input-for-issue">Batch Name</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.BatchName")}</label>
         <input
           type="text"
           id="cert-number-input-for-issue"
           value={batchName}
           onChange={(e) => setBatchName(e.target.value)}
         />
-        <label htmlFor="cert-number-input-for-issue">Batch Description</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.BatchDescription")}</label>
         <input
           type="text"
           id="cert-number-input-for-issue"
           value={batchDescription}
           onChange={(e) => setBatchDescription(e.target.value)}
         />
-        <label htmlFor="cert-number-input-for-issue">No. of Student</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.NumberOfStudents")}</label>
         <input
           type="number"
           id="cert-number-input-for-issue"
           value={certNumber}
           onChange={(e) => setCertNumber(e.target.value)}
         />
-        <label htmlFor="cert-number-input-for-issue">Upload NFT Image</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.uploadNFTImage")}</label>
         <input
           type="file"
           id="image-selector"
@@ -295,7 +295,7 @@ const LoadingPage = ({ status, category,setCategory,setIsLoading,setBatchName,se
       <h3>{status}</h3>
       {status === "Issuing certificates..." && (
         <div>
-          <h4>Order has been submitted Please check in Few Minute.</h4>
+          <h4>{t("dNFT.OderhasbeenSubmittedPleaseCheckinFewMinutes")}</h4>
         <h4>{t("Institutions.certIssue.headingCloseWindow")}</h4>
         <button onClick={() => {
           { 

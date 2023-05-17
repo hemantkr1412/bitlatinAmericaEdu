@@ -82,7 +82,7 @@ const DNFTMainPage = () => {
 
   const navbuttons = [
     {
-      text: "Create New Batch",
+      text: t("dNFT.Create_New_Batch"),
       logo: (
         <div>
           <WebIcon />
@@ -91,7 +91,7 @@ const DNFTMainPage = () => {
       category: "Create New Batch",
     },
     {
-      text: "Update Batch",
+      text: t("dNFT.Update_Batch"),
       logo: (
         <div>
           <WorkspacePremiumIcon />
@@ -100,7 +100,7 @@ const DNFTMainPage = () => {
       category: "Update Batch",
     },
     {
-      text: "Batch List",
+      text: t("dNFT.Batch_List"),
       logo: (
         <div>
           <WorkspacePremiumIcon />
@@ -163,7 +163,7 @@ const DNFTMainPage = () => {
               padding: "10px",
             }}
           >
-            <h4>Batch List</h4>
+            <h4>{t("dNFT.Batch_List")}</h4>
           </div>
 
           {category !== "Create New Batch" && (
@@ -226,19 +226,6 @@ const DNFTMainPage = () => {
               }}
               onClick={() => {
                 setSelectedBatch(batch);
-                // dNFtForStudent({
-                //   request_type: "students",
-                //   account: user.userAccount,
-                //   batch_id: batch.id,
-                // })
-                //   .then((res) => {
-                //     console.log("---------------------------------------");
-                //     console.log(res);
-                //     setStudentList(res);
-                //   })
-                //   .catch((err) => {
-                //     console.log(err);
-                //   });
               }}
             >
               {batch.name}
@@ -286,20 +273,20 @@ const DNFTMainPage = () => {
                   setIsBatchCreator(true);
                 }}
               >
-                Create New Batch
+                {t("dNFT.Create_New_Batch")}
               </button>
             </div>
           ))}
         {category === "Update Batch" && (
           <div>
-            <h2>Update Batch</h2>
+            <h2>{t("dNFT.Update_Batch")}</h2>
             {selectedBatch.name === "" ? (
-              <h3>Please Select Batch.......</h3>
+              <h3>{t("Please_Select_Batch.......")}</h3>
             ) : (
               <div>
-                <h4>Batch Name : {selectedBatch.name}</h4>
-                <h4>Batch Description : {selectedBatch.description}</h4>
-                <h4> Current Batch Image : </h4>
+                <h4>{t("dNFT.BatchName")} : {selectedBatch.name}</h4>
+                <h4>{t("dNFT.BatchDescription")} : {selectedBatch.description}</h4>
+                <h4> {t("dNFT.Current_batch_image")} : </h4>
                 <div
                   style={{
                     width: imageWidth.toString() + "px",
@@ -333,7 +320,7 @@ const DNFTMainPage = () => {
                     marginTop: "50px",
                   }}
                 >
-                  Upload New NFT Image
+                  {t("dNFT.uploadNewNFTImage")}
                 </label>
                 <input
                   type="file"
@@ -424,7 +411,7 @@ const DNFTMainPage = () => {
                       });
                   }}
                 >
-                  Update
+                  {t("dNFT.update")}
                 </button>
                 <p>{status}</p>
               </div>
@@ -441,12 +428,12 @@ const DNFTMainPage = () => {
               textAlign: "center",
             }}
           >
-            <h2>Student List</h2>
+            <h2>{t("dNFT.StudentList")}</h2>
             {selectedBatch.name === "" ? (
-              <h3>Please Select Batch.......</h3>
+              <h3>{t("dNFT.Please_Select_Batch.......")}</h3>
             ) : (
               <div>
-                <h4>Batch Name : {selectedBatch.name}</h4>
+                <h4>{t("dNFT.BatchName")} : {selectedBatch.name}</h4>
                 <StudentsView students={selectedBatch.students} />
               </div>
             )}
@@ -505,20 +492,20 @@ const DNFTMainPage = () => {
                     setIsBatchCreator(true);
                   }}
                 >
-                  Create New Batch
+                 {t("dNFT.Create_New_Batch")}
                 </button>
               </div>
             ))}
           {category === "Update Batch" && (
             <div>
-              <h2>Update Batch</h2>
+              <h2>{t("dNFT.Update_Batch")}</h2>
               {selectedBatch.name === "" ? (
-                <h3>Please Select Batch.......</h3>
+                <h3>{t("Please_Select_Batch.......")}</h3>
               ) : (
                 <div>
-                  <h4>Batch Name : {selectedBatch.name}</h4>
-                  <h4>Batch Description : {selectedBatch.description}</h4>
-                  <h4> Current Batch Image : </h4>
+                  <h4>{t("dNFT.BatchName")} : {selectedBatch.name}</h4>
+                  <h4>{t("dNFT.BatchDescription")} : {selectedBatch.description}</h4>
+                  <h4> {t("dNFT.Current_batch_image")} : </h4>
                   <div
                     style={{
                       width: imageWidth.toString() + "px",
@@ -531,20 +518,7 @@ const DNFTMainPage = () => {
                       alt="Batch Image"
                       width={imageWidth}
                     />
-                    {/* <QRCode
-                      size={256}
-                      bgColor={"rgba(0, 0, 0, 0)"}
-                      fgColor={"rgba(0, 0, 0, 1)"}
-                      style={{
-                        width: (parseFloat(imageWidth) * 0.1).toString() + "px",
-                        height:
-                          (parseFloat(imageWidth) * 0.1).toString() + "px",
-                        position: "absolute",
-                        left: 10 + "%",
-                        top: 10 + "%",
-                      }}
-                      value={"https://bitmemoirlatam.com/#/verify/"}
-                    /> */}
+                    
                   </div>
 
                   <label
@@ -553,7 +527,7 @@ const DNFTMainPage = () => {
                       marginTop: "50px",
                     }}
                   >
-                    Upload New NFT Image
+                    {t("dNFT.uploadNewNFTImage")}
                   </label>
                   <input
                     type="file"
@@ -657,7 +631,7 @@ const DNFTMainPage = () => {
                         });
                     }}
                   >
-                    Update
+                    {t("dNFT.update")}
                   </button>
                   <p>{status}</p>
                 </div>
@@ -674,12 +648,12 @@ const DNFTMainPage = () => {
                 textAlign: "center",
               }}
             >
-              <h2>Student List</h2>
+              <h2>{t("dNFT.StudentList")}</h2>
               {selectedBatch.name === "" ? (
-                <h3>Please Select Batch.......</h3>
+                <h3>{t("dNFT.Please_Select_Batch.......")}</h3>
               ) : (
                 <div>
-                  <h4>Batch Name : {selectedBatch.name}</h4>
+                  <h4>{t("dNFT.BatchName")} : {selectedBatch.name}</h4>
                   <StudentsView students={selectedBatch.students} />
                 </div>
               )}

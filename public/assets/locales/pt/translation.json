@@ -12,7 +12,10 @@
     "Roadmap": "Roteiro",
     "Whitepaper": "Papel branco",
     "Tokenomics": "Tokenomics",
-    "OurPartners": "Our Partners"
+    "OurPartners": "Nossos parceiros",
+    "BatchdNFT":"Lote dNFT",
+    "individualdNFT":"Individual dNFT",
+    "blog":"Blog"
   },
   "Home": {
     "heading": "BitMemoir",
@@ -418,5 +421,49 @@
     "head": "Nossa visão é resolver a atual e crescente crise de confiança e aumentar a credibilidade da web.",
     "content": "A Beyond Imagination Technologies (BIT) foi fundada como a primeira startup da Índia com a ideia de nutrir a tecnologia Blockchain/Web3 e criar soluções econômicas, seguras e protegidas que atendem às necessidades do mercado. A BIT procura resolver os principais problemas do mercado em todas as vertentes possíveis e em múltiplos setores, estendendo o seu alcance a todos os cantos do mundo.", 
     "button":"Veja mais"
+  },
+  "dNFT":{
+    "Batch"  : "Lote",
+    "BatchName" : "Nome do lote",
+    "BatchDescription" : "Descrição do lote",
+    "BatchImage" : "Imagem em lote",
+    "Create_New_Batch" : "Crie um novo lote",
+    "Update_Batch" : "Atualizar lote",
+    "Batch_List" : "Lista de lote",
+    "Please_Select_Batch.......":"Selecione o lote.......",
+    "Current_batch_image" : "Imagem do lote atual",
+    "uploadNewNFTImage" : "Carregar nova imagem NFT",
+    "update":"Atualizar",
+    "StudentList":"Lista de estudantes",
+    "address":"Endereço",
+    "status":"Status",
+    "TokenId": "Id símbolo",
+    "dynamicIssuedSucessfully": "NFT dinâmica emitida com sucesso",
+    "CertificateOderSentForApproval": "Pedido de certificado enviado para aprovação",
+    "createYourBatch": "Crie seu lote",
+    "NumberOfStudents": "Número de estudantes",
+    "uploadNFTImage":"Carregue a imagem NFT",
+    "OderhasbeenSubmittedPleaseCheckinFewMinutes": "Oder foi enviado, verifique alguns minutos",
+    "DynamicNFTCertificate": "Certificado NFT dinâmico",
+    "CreateNewNFT": "Crie novo NFT",
+    "UpdatNFT":"Atualize a NFT",
+    "NFTList":"Lista de NFT",
+    "Please_Select_NFT.......":"Selecione a NFT.......",
+    "search":"Procurar",
+    "selectAnotherNFT":"Selecione outra NFT",
+    "walletAddress":"Endereço da carteira",
+    "Current_NFT_image":"Imagem NFT atual",
+    "uploadNewNFTImage":"Carregar nova imagem NFT",
+    "nftUpdatedSuccessfully":"NFT atualizado com sucesso",
+    "Erroredpleasetryagain":"Erro por favor tente novamente",
+    "walletAddress":"Endereço da carteira",
+    "NFTDescription":"Descrição da NFT",
+    "uploadNFTImage":"Carregue a imagem NFT"
+
+
+
+    
+
+
   }
 }

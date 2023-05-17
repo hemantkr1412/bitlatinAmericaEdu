@@ -92,7 +92,7 @@ const Individualdnft = () => {
   // console.log(individuallst);
   const navbuttons = [
     {
-      text: "Create New NFT",
+      text: t("dNFT.CreateNewNFT"),
       logo: (
         <div>
           <WebIcon />
@@ -101,7 +101,7 @@ const Individualdnft = () => {
       category: "Create New NFT",
     },
     {
-      text: "Update NFT",
+      text: t("dNFT.UpdateNFT"),
       logo: (
         <div>
           <WorkspacePremiumIcon />
@@ -110,7 +110,7 @@ const Individualdnft = () => {
       category: "Update NFT",
     },
     {
-      text: "NFT List",
+      text: t("dNFT.NFTList"),
       logo: (
         <div>
           <WorkspacePremiumIcon />
@@ -173,7 +173,7 @@ const Individualdnft = () => {
               padding: "10px",
             }}
           >
-            <h4>NFT List</h4>
+            <h4>{t("dNFT.NFTList")}</h4>
           </div>
 
           {category === "Update NFT" && (
@@ -513,17 +513,17 @@ const Individualdnft = () => {
                     setIsBatchCreator(true);
                   }}
                 >
-                  Create New NFT
+                  {t("dNFT.CreateNewNFT")}
                 </button>
               </div>
             ))}
           {category === "Update NFT" && (
             <div>
-              <h2>Update NFT</h2>
+              <h2>{t("dNFT.UpdateNFT")}</h2>
               {selectednft.wallet_address === "" ? (
                 <div>
-                  <h3>Please Select NFT.......</h3>
-                  <label htmlFor="inputtokenid">Token ID</label>
+                  <h3>{t("dNFT.Please_Select_NFT.......")}</h3>
+                  <label htmlFor="inputtokenid">{t("dNFT.TokenId")}</label>
                   <input type="number" placeholder="Token ID" id="inputtokenid" value={token_id} onChange={ (e)=> setToken_id(e.target.value)}/>
                   <button style={{
                     marginTop: "20px",
@@ -541,7 +541,7 @@ const Individualdnft = () => {
                     );
 
                   }}
-                  >Search</button>
+                  >{t("dNFT.search")}</button>
                   <p>{status}</p>
                 </div>
               ) : (
@@ -554,11 +554,11 @@ const Individualdnft = () => {
                     setStatus("");
                   }
                     }>
-                    Select Another NFT
+                    {t("dNFT.selectAnotherNFT")}
                   </button>
-                  <h4>Wallet Address : {selectednft.wallet_address}</h4>
+                  <h4>{t("dNFT.walletAddress")} : {selectednft.wallet_address}</h4>
                   {/* <h4>Batch Description : {individuallst.description}</h4> */}
-                  <h4> Current Batch Image : </h4>
+                  <h4> {t("dNFT.Current_NFT_image")} : </h4>
                   <div
                     style={{
                       width: imageWidth.toString() + "px",
@@ -579,7 +579,7 @@ const Individualdnft = () => {
                       marginTop: "50px",
                     }}
                   >
-                    Upload New NFT Image
+                    {t("dNFT.uploadNewNFTImage")}
                   </label>
                   <input
                     type="file"
@@ -688,7 +688,7 @@ const Individualdnft = () => {
                         });
                     }}
                   >
-                    Update
+                    {t("dNFT.update")}
                   </button>
                   {/* <p>{status}</p> */}
                 </div>
@@ -705,7 +705,7 @@ const Individualdnft = () => {
                 textAlign: "center",
               }}
             >
-              <h2>Student List</h2>
+              <h2>{t("dNFT.StudentList")}</h2>
               {/* {selectedBatch.name === "" ? (
                 <h3>Please Select Batch.......</h3>
               ) : ( */}

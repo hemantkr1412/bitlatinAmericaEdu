@@ -48,7 +48,7 @@ const Blogpage = () => {
             {/* <div style={{ color: "white", textAlign: "center", fontSize: "30px", fontWeight: "600" }} className="">
                  Blog
             </div> */}
-            <div style={{color: "white", textAlign: "center", fontSize: "30px", fontWeight: "600",paddingTop:"30px"}}>BitMemoir Blogs</div>
+            <div style={{color: "white", textAlign: "center", fontSize: "30px", fontWeight: "600",paddingTop:"30px"}}>Blogs</div>
             <div className="verifypage2">
                 <div className='blog_display'>
                     <div className="container">

@@ -1,12 +1,4 @@
 import "./landing.css";
-import SchoolIcon from "@mui/icons-material/School";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
-import GavelIcon from "@mui/icons-material/Gavel";
-import HomeIcon from "@mui/icons-material/Home";
-import SportsHandballIcon from "@mui/icons-material/SportsHandball";
-import CelebrationIcon from "@mui/icons-material/Celebration";
-import MenuIcon from "@mui/icons-material/Menu";
 import UserContext from "../../../context/userContext/UserContext";
 import NoWalletPage from "../../connection/NoWalletPage";
 import Connect from "../../connection/Connect";

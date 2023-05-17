@@ -96,8 +96,8 @@ const CertIssueIndividual = ({ category, setCategory, setIsBatchCreator}) => {
     })
       .then((res) => {
         if (res === "issued") {
-          setStatus("Dynamic certificates issued successfully.");
-          alert("Dynamic certificates issued successfully.");
+          setStatus(t("dNFT.dynamicIssuedSucessfully"));
+          alert(t("dNFT.dynamicIssuedSucessfully"));
           // alert("Order has been submitted Please check in Few Minute.");
           // window.location.reload();
         } else if (res === "pending approval") {
@@ -142,17 +142,17 @@ const CertIssueIndividual = ({ category, setCategory, setIsBatchCreator}) => {
         justifyContent: "center",
       }}
     >
-      <h2>Create NFT</h2>
+      <h2>{t("dNFT.CreateNewNFT")}</h2>
 
       <div style={{ width: "500px" }}>
-        <label htmlFor="cert-number-input-for-issue">Wallet Address</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.walletAddress")}</label>
         <input
           type="text"
           id="cert-number-input-for-issue"
           value={walletaddress}
           onChange={(e) => setWalletaddress(e.target.value)}
         />
-        <label htmlFor="cert-number-input-for-issue">NFT Description</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.NFTDescription")}</label>
         <input
           type="text"
           id="cert-number-input-for-issue"
@@ -166,7 +166,7 @@ const CertIssueIndividual = ({ category, setCategory, setIsBatchCreator}) => {
           value={certNumber}
           onChange={(e) => setCertNumber(e.target.value)}
         /> */}
-        <label htmlFor="cert-number-input-for-issue">Upload NFT Image</label>
+        <label htmlFor="cert-number-input-for-issue">{t("dNFT.uploadNFTImage")}</label>
         <input
           type="file"
           id="image-selector"
