@@ -37,7 +37,7 @@ const AdminUpload2 = () => {
             str = state.value,
             rex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
         while (m = rex.exec(str)) {
-            urls.push(`https://bitmemoir.org/media/custom/${m[0]}`);
+            urls.push(`${m[0]}`);
         }
         console.log(urls);
         let array3 = imagelinks.filter(entry1 => !urls.some(entry2 => entry1.url === entry2));
