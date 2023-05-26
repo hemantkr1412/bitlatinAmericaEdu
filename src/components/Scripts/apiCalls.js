@@ -237,8 +237,6 @@ export const dNFtForStudent = async (data) => {
   return response.response;
 };
 
-
-
 // export const loginadmin = async (data) => {
 //   const endpoint = "api/login/";
 //   const url = BASE_URL + endpoint;
@@ -249,13 +247,13 @@ export const dNFtForStudent = async (data) => {
 //   });
 //   const response = await fetch(url, { method: "POST", body: formData })
 //     .then((res) => {
-//       console.log(res);  
+//       console.log(res);
 
 //       async function gettoken(res){
-//          const result = await res.text(); 
+//          const result = await res.text();
 //          console.log(result);
 //          return result;
-//       } 
+//       }
 //       return gettoken(res);
 //     })
 //     .catch((err) => {
@@ -265,6 +263,41 @@ export const dNFtForStudent = async (data) => {
 //   //   throw Object.assign(new Error("Server error"), { code: 402 });
 // };
 
-
-
-
+export const paypalpaymentApi = async (data) => {
+  const endpoint = "paypalpayment";
+  const url = BASE_URL + endpoint;
+  let formData = new FormData();
+  Object.keys(data).map((item) => {
+    formData.append(item, data[item]);
+    return null;
+  });
+  const response = await fetch(url, { method: "POST", body: formData })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return "Server error";
+    });
+  if (response.status !== "Success")
+    throw Object.assign(new Error("Server error"), { code: 402 });
+  return response.response;
+};
+export const promoApi = async (data) => {
+  const endpoint = "promocode";
+  const url = BASE_URL + endpoint;
+  let formData = new FormData();
+  Object.keys(data).map((item) => {
+    formData.append(item, data[item]);
+    return null;
+  });
+  const response = await fetch(url, { method: "POST", body: formData })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return "Server error";
+    });
+  if (response.status !== "Success")
+    throw Object.assign(new Error("Server error"), { code: 402 });
+  return response.response;
+};

@@ -3,7 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import "./admin.css";
 import AddAdminPage from "./addAdminPage";
 import UserContext from "../../context/userContext/UserContext";
-import { adminApi, userApi,SubsForDev} from "../Scripts/apiCalls";
+import { adminApi, userApi, SubsForDev, promoApi } from "../Scripts/apiCalls";
 import UserDetailsContainer from "./userdetailsContainer";
 
 export const AdminPage = () => {
@@ -11,6 +11,7 @@ export const AdminPage = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [status, setStatus] = useState("Checking credentials...");
   const [users, setUsers] = useState([]);
+  const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
     checkAdminCredentials();
@@ -38,6 +39,20 @@ export const AdminPage = () => {
       .catch((err) => {
         setStatus("Something went wrong.");
       });
+  };
+
+  const getRandomString = (length) => {
+    let result = "";
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    let counter = 0;
+    while (counter < length) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      counter += 1;
+    }
+    let newString = "BIT-" + result + "-";
+    setRandomString(newString);
   };
 
   return (
@@ -84,7 +99,7 @@ export const AdminPage = () => {
                 })
                   .then((res) => {
                     console.log(res);
-                    alert("Limit changed successfully.")
+                    alert("Limit changed successfully.");
                   })
                   .then((err) => {
                     console.log(err);
@@ -132,12 +147,10 @@ export const AdminPage = () => {
             <button
               onClick={() => {
                 SubsForDev({
-                  user_address: document.getElementById("subs-account")
-                    .value,
-                  plan: document.getElementById("sub-plan")
-                    .value,
-                  duration_days: document.getElementById("duration_in_days")
-                    .value,
+                  user_address: document.getElementById("subs-account").value,
+                  plan: document.getElementById("sub-plan").value,
+                  duration_days:
+                    document.getElementById("duration_in_days").value,
                 })
                   .then((res) => {
                     console.log(res);
@@ -150,6 +163,52 @@ export const AdminPage = () => {
               }}
             >
               Subscribe
+            </button>
+          </div>
+          <h2>Create Promo Code:</h2>
+          <div>
+            <div
+              style={{
+                width: "100%",
+                display: "grid",
+                gridTemplateColumns: "1fr 2fr",
+                margin: "20px 0px",
+                gap: "20px",
+              }}
+            >
+              <button
+                onClick={() => getRandomString(5)}
+                style={{ border: "none", padding: "0px" }}
+              >
+                Generate Random String:
+              </button>
+              <div>{randomString}</div>
+              <label htmlFor="promo-code">Code: </label>
+              <input type="text" id="promo-code" />
+              <label htmlFor="promo-discount">Discount(%) : </label>
+              <input type="number" id="promo-discount" />
+            </div>
+            <button
+              onClick={() => {
+                let code = document.getElementById("promo-code").value;
+                let discount = document.getElementById("promo-discount").value;
+                promoApi({
+                  admin: user.userAccount,
+                  code: code,
+                  request_type: "create",
+                  discount: discount,
+                })
+                  .then((res) => {
+                    console.log(res);
+                    alert("Promo Code created Successfully.");
+                  })
+                  .catch((err) => {
+                    console.log(err);
+                    alert("Something went wrong. try again.");
+                  });
+              }}
+            >
+              Create Promo code
             </button>
           </div>
         </div>

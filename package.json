@@ -8,6 +8,7 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.15",
     "@mui/material": "^5.10.15",
+    "@paypal/react-paypal-js": "^7.8.3",
     "@syncfusion/ej2-react-richtexteditor": "^21.2.4",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",

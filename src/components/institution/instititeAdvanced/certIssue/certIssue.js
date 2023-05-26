@@ -106,8 +106,8 @@ const CertIssue = ({ setView, certData, category }) => {
   const date =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
   console.log(date);
-  const d = new Date(user.userData.subscription.end_Date);
-  // const d = new Date();
+  // const d = new Date(user.userData.subscription.end_Date);
+  const d = new Date();
   const end_date =
     d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
   console.log(end_date);
