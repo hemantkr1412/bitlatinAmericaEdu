@@ -8,6 +8,7 @@ const AdminUpload2 = () => {
     const navigate = useNavigate();
     const [topimagefile, settopimagefile] = useState();
     const [title, settitle] = useState(null);
+    const [language,setlanguage] = useState("en");
     const [imagelinks, setimagelinks] = useState(
         [{
             id: null,
@@ -122,6 +123,7 @@ const AdminUpload2 = () => {
         let bodyContent = new FormData();
         bodyContent.append("title", `${title}`);
         bodyContent.append("content", state.value);
+        bodyContent.append("language", `${language}`);
         bodyContent.append("author_id", `${items.user_id}`);
         bodyContent.append("heading_image", topimagefile);
 
@@ -199,6 +201,46 @@ const AdminUpload2 = () => {
                             placeholder="name@flowbite.com"
                             required=""
                         />
+                    </div>
+                    <div>
+                    <label
+                            htmlFor="email"
+                            style={{
+                                display: "block",
+                                marginBottom: "0.5rem",
+                                color: "black",
+                                fontSize: "0.875rem",
+                                lineHeight: "1.25rem",
+                                fontWeight: "500",
+                            }}
+                        >
+                            Language
+                        </label>
+                        <select
+                            onChange={(e) => {
+                                setlanguage(e.target.value);
+                            }}
+                            id="email"
+                            style={{
+                                display: "block",
+                                padding: "0.625rem",
+                                backgroundColor: "#F9FAFB",
+                                color: "black",
+                                fontSize: "0.875rem",
+                                lineHeight: "1.25rem",
+                                width: "100%",
+                                borderRadius: "0.5rem",
+                                borderWidth: "1px",
+                                borderColor: "#D1D5DB",
+                            }}
+                            placeholder="
+                            "
+                            required=""
+                        >
+                            <option value="en">English</option>
+                            <option value="sp">Spanish</option>
+                        </select>
+
                     </div>
                     <div>
                         <label
