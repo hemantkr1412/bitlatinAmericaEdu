@@ -24,6 +24,9 @@ const Blogpage = () => {
         let data = await response.text();
         data = JSON.parse(data);
         console.log(data);
+                data = data.filter((item) => {
+            return item.language === 'sp';
+        })
         setdata(data);
         setpage(
             data.length % 10 === 0 ?
