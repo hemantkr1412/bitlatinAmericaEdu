@@ -24,7 +24,8 @@ import BlogpageAdmin from "./components/Adminblog/AdminBlog";
 import Blog from "./components/Blog/Blog";
 import EditBlog from "./components/Adminblog/EditBlog";
 import Adminlogin from "./components/Adminblog/Adminlogin";
-// import Aboutus from "./components/about/Aboutus"; 
+import TryForFree from "./components/tryforfree/tryforfree";
+// import Aboutus from "./components/about/Aboutus";
 import FormikRichText from "./components/Adminblog/FormikRichText";
 // import BitWallet from "./components/BitWallet/Pages/BitWallet"
 import Verify from "./components/verify/verify";
@@ -73,10 +74,32 @@ function App() {
             <Route path="/blogs" element={<Blogpage />} />
             <Route path="/blogs/:id" element={<Blog />} />
             <Route path="/blog/adminlogin" element={<Adminlogin />} />
-            <Route path="/blog/adminUpload" element={<Protected><AdminUpload2 /></Protected>} />
+            <Route
+              path="/blog/adminUpload"
+              element={
+                <Protected>
+                  <AdminUpload2 />
+                </Protected>
+              }
+            />
             <Route path="/individualdnft" element={<IndividualLandingPage />} />
-            <Route path="/blog/admin" element={<Protected><BlogpageAdmin /></Protected>} />
-            <Route path="/editblog/:id" element={<Protected><EditBlog /></Protected>} />
+            <Route
+              path="/blog/admin"
+              element={
+                <Protected>
+                  <BlogpageAdmin />
+                </Protected>
+              }
+            />
+            <Route
+              path="/editblog/:id"
+              element={
+                <Protected>
+                  <EditBlog />
+                </Protected>
+              }
+            />
+            <Route path="/tryforfree" element={<TryForFree />} />
           </Routes>
           <Footer />
         </UserState>

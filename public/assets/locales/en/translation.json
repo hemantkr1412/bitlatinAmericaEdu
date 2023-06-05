@@ -23,6 +23,7 @@
     "heading2": "Education",
     "subheading": "Transforming the education system",
     "button": "Learn More",
+    "button2": "Try for Free",
     "container2": {
       "heading-1": "Blockchain For",
       "heading-2": "Colleges And Universities",
@@ -415,58 +416,50 @@
     "hrConsultant": "HR Consultant",
     "BlockchainDeveloper": "Blockchain Developer"
   },
-  "ComingSoon": "Coming Soon..." ,
-
-
+  "ComingSoon": "Coming Soon...",
 
   "Aboutus": {
-     "main":"About us",
-     "head":"Our Vision is to solve the current, growing trust crisis and increase the credibility of the web.",
-     "content":"Beyond Imagination Technologies (BIT) was founded as India's first startup with the idea of ​​nurturing Blockchain/Web3 technology and creating cost-effective, safe and secure solutions that fit the needs of the market. BIT seeks to address the main problems of the market in all possible aspects and in multiple sectors, extending its reach to all corners of the world.",
-     "button":"View More"
+    "main": "About us",
+    "head": "Our Vision is to solve the current, growing trust crisis and increase the credibility of the web.",
+    "content": "Beyond Imagination Technologies (BIT) was founded as India's first startup with the idea of ​​nurturing Blockchain/Web3 technology and creating cost-effective, safe and secure solutions that fit the needs of the market. BIT seeks to address the main problems of the market in all possible aspects and in multiple sectors, extending its reach to all corners of the world.",
+    "button": "View More"
   },
-  "dNFT":{
-    "Batch"  : "Batch",
-    "BatchName" : "Batch Name",
-    "BatchDescription" : "Batch Description",
-    "BatchImage" : "Batch Image",
-    "Create_New_Batch" : "Create New Batch",
-    "Update_Batch" : "Update Batch",
-    "Batch_List" : "Batch List",
-    "Please_Select_Batch.......":"Please Select Batch.......",
-    "Current_batch_image" : "Current batch image",
-    "uploadNewNFTImage" : "Upload New NFT Image",
-    "update":"Update",
-    "StudentList":"Student List",
-    "address":"Address",
-    "status":"Status",
+  "dNFT": {
+    "Batch": "Batch",
+    "BatchName": "Batch Name",
+    "BatchDescription": "Batch Description",
+    "BatchImage": "Batch Image",
+    "Create_New_Batch": "Create New Batch",
+    "Update_Batch": "Update Batch",
+    "Batch_List": "Batch List",
+    "Please_Select_Batch.......": "Please Select Batch.......",
+    "Current_batch_image": "Current batch image",
+    "uploadNewNFTImage": "Upload New NFT Image",
+    "update": "Update",
+    "StudentList": "Student List",
+    "address": "Address",
+    "status": "Status",
     "TokenId": "Token Id",
     "dynamicIssuedSucessfully": "Dynamic NFT Issued Sucessfully",
     "CertificateOderSentForApproval": "Certificate Order Sent For Approval",
     "createYourBatch": "Create Your Batch",
     "NumberOfStudents": "Number Of Students",
-    "uploadNFTImage":"Upload NFT Image",
+    "uploadNFTImage": "Upload NFT Image",
     "OderhasbeenSubmittedPleaseCheckinFewMinutes": "Oder has been Submitted Please Check in Few Minutes",
     "DynamicNFTCertificate": "Dynamic NFT Certificate",
     "CreateNewNFT": "Create New NFT",
-    "UpdateNFT":"Update NFT",
-    "NFTList":"NFT List",
-    "Please_Select_NFT.......":"Please Select NFT.......",
-    "search":"Search",
-    "selectAnotherNFT":"Select Another NFT",
-    "walletAddress":"Wallet Address",
-    "Current_NFT_image":"Current NFT image",
-    "uploadNewNFTImage":"Upload New NFT Image",
-    "nftUpdatedSuccessfully":"NFT Updated Successfully",
-    "Erroredpleasetryagain":"Errored please try again",
-    "walletAddress":"Wallet Address",
-    "NFTDescription":"NFT Description",
-    "uploadNFTImage":"Upload NFT Image"
-
-
-
-    
-
-
+    "UpdateNFT": "Update NFT",
+    "NFTList": "NFT List",
+    "Please_Select_NFT.......": "Please Select NFT.......",
+    "search": "Search",
+    "selectAnotherNFT": "Select Another NFT",
+    "walletAddress": "Wallet Address",
+    "Current_NFT_image": "Current NFT image",
+    "uploadNewNFTImage": "Upload New NFT Image",
+    "nftUpdatedSuccessfully": "NFT Updated Successfully",
+    "Erroredpleasetryagain": "Errored please try again",
+    "walletAddress": "Wallet Address",
+    "NFTDescription": "NFT Description",
+    "uploadNFTImage": "Upload NFT Image"
   }
-} 
+}
