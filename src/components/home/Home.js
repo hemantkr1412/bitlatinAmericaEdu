@@ -24,7 +24,7 @@ import Insta from "./assets/instagramlogo.svg";
 import twitter from "./assets/twitter-square-color-icon.svg";
 import Linkidein from "./assets/linkedinlogo.svg";
 import telegram from "./assets/telegram-icon.svg";
-
+import { useNavigate } from "react-router-dom";
 
 function TabPanel(props) {
   const { value } = props;
@@ -55,6 +55,7 @@ const Home = () => {
   const [selecttab, setselecttab] = useState(1);
   const { t } = useTranslation();
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -166,15 +167,25 @@ const Home = () => {
               </span>
             </div>
             <div className="secondheading">{t("Home.subheading")}</div>
-            <button
-              onClick={() => {
-                let toScrollElement =
-                  document.getElementById("whatisbitmemoir");
-                toScrollElement.scrollIntoView();
-              }}
-            >
-              {t("Home.button")}
-            </button>
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button
+                style={{ background: "white", color: "var(--primary)" }}
+                onClick={() => {
+                  navigate("/tryforfree");
+                }}
+              >
+                {t("Home.button2")}
+              </button>
+              <button
+                onClick={() => {
+                  let toScrollElement =
+                    document.getElementById("whatisbitmemoir");
+                  toScrollElement.scrollIntoView();
+                }}
+              >
+                {t("Home.button")}
+              </button>
+            </div>
           </div>
           <div className="illustration">
             <img src={img1} alt="" />
@@ -309,12 +320,26 @@ const Home = () => {
       {/* Why Bit Section ---------------------------------------- */}
       <div className="joinContainer2">
         <div className="stepsheadingbtndiv">
-          <div onClick={() => {
-            setselecttab(0);
-          }} className={`benefit ${selecttab === 0 ? "fillbackground" : "transparentbackground"}`}>{t("Home.generate_degree_btn")}</div>
-          <div onClick={() => {
-            setselecttab(1);
-          }} className={`benefit2 ${selecttab === 1 ? "fillbackground" : "transparentbackground"}`}>{t("Home.generate_certificate_btn")}</div>
+          <div
+            onClick={() => {
+              setselecttab(0);
+            }}
+            className={`benefit ${
+              selecttab === 0 ? "fillbackground" : "transparentbackground"
+            }`}
+          >
+            {t("Home.generate_degree_btn")}
+          </div>
+          <div
+            onClick={() => {
+              setselecttab(1);
+            }}
+            className={`benefit2 ${
+              selecttab === 1 ? "fillbackground" : "transparentbackground"
+            }`}
+          >
+            {t("Home.generate_certificate_btn")}
+          </div>
         </div>
       </div>
       <div className="whybitcontainer">
@@ -425,7 +450,7 @@ const Home = () => {
             </div>
           </div>
           <div className="stepscontainer2">
-          <div className="step">
+            <div className="step">
               <div className="stepimg">
                 <img src={step4} alt="step4" />
               </div>
@@ -520,9 +545,9 @@ const Home = () => {
           </Box>
           <TabPanel
             value={value}
-          // index={0}
-          // users={props.users}
-          // update={props.update}
+            // index={0}
+            // users={props.users}
+            // update={props.update}
           ></TabPanel>
         </Box>
       </div>

@@ -11,7 +11,6 @@ export default function Payment({ amount, close, certNumber, promocode }) {
       options={{
         "client-id":
           "Aa5J3mR3jlFHK_hdfAgLf27_6ipx92D_RGS_6o89-1xzU2lks4P5AIrLV_71XQZA_D4PmQJAaJfrkA3I",
-        // currency: "INR",
       }}
     >
       <PayPalButtons
