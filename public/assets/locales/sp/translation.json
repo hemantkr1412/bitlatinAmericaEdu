@@ -461,5 +461,27 @@
     "walletAddress": "Dirección de billetera",
     "NFTDescription": "Descripción NFT",
     "uploadNFTImage": "Subir la imagen NFT"
+  },
+  "tryforfree": {
+    "firstName": "Nombre",
+    "enterfirstname": "Ingrese su nombre...",
+    "lastName": "Apellido",
+    "enterlastname": "Ingrese su apellido...",
+    "designation": "Cargo",
+    "enterdesignation": "Ingrese su cargo...",
+    "email": "Email",
+    "enteremail": "Ingrese su email...",
+    "organization": "Organización",
+    "enterorganization": "Ingrese el nombre de la organización...",
+    "contact": "Número de contacto",
+    "enterContact": "Ingrese su número de teléfono...",
+    "country": "País",
+    "entercountry": "Ingrese su país...",
+    "enter": "Ingresar",
+    "signup": "Regístrese para obtener Certificados Gratuitos",
+    "requiredFields": "* los campos marcados son obligatorios.",
+    "submitting": "Enviando. Por favor espere...",
+    "thankYou": "Gracias por elegir bitmemoir. Nuestro representante se pondrá en contacto con usted en breve.",
+    "somethingWentWrong": "Algo salió mal. Por favor, contáctenos en support@beimagine.tech"
   }
 }

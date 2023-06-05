@@ -2,11 +2,14 @@ import { useState } from "react";
 import img from "./tryimage.jpg";
 import { useNavigate } from "react-router-dom";
 import { tryforfreeApi } from "../Scripts/apiCalls";
+import { useTranslation } from "react-i18next";
 
 const TryForFree = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [status, setStatus] = useState("");
   const handleSubmit = () => {
+    let language = document.getElementsByTagName("html")[0]["lang"];
     let name = document.getElementById("name-input").value;
     let lastname = document.getElementById("last-name-input").value;
     let designation = document.getElementById("designation-input").value;
@@ -23,10 +26,10 @@ const TryForFree = () => {
       contact === "" ||
       country === ""
     ) {
-      setStatus("* marked fields are required.");
+      setStatus(t("tryforfree.requiredFields"));
       return;
     }
-    setStatus("Submitting. Please wait...");
+    setStatus(t("tryforfree.submitting"));
     tryforfreeApi({
       name,
       lastname,
@@ -35,19 +38,16 @@ const TryForFree = () => {
       institute,
       contact,
       country,
+      language,
     })
       .then((res) => {
         setStatus("");
-        alert(
-          "Thankyou for choosing bitmemoir. Our representative will contact you shortly."
-        );
+        alert(t("tryforfree.thankYou"));
         navigate("/home");
       })
       .catch((err) => {
         setStatus("");
-        alert(
-          "Something went wrong. Please contact us at support@beimagine.tech"
-        );
+        alert(t("tryforfree.somethingWentWrong"));
       });
   };
   return (
@@ -76,41 +76,53 @@ const TryForFree = () => {
             maxWidth: "500px",
           }}
         >
-          <h1>Sign-up to get Free Certificates</h1>
+          <h1>{t("tryforfree.signup")}</h1>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <label htmlFor="name-input">First Name*</label>
-            <input type="text" id="name-input" placeholder="Enter name..." />
-            <label htmlFor="last-name-input">Last Name*</label>
+            <label htmlFor="name-input">{t("tryforfree.firstName")}*</label>
+            <input
+              type="text"
+              id="name-input"
+              placeholder={t("tryforfree.enterfirstname")}
+            />
+            <label htmlFor="last-name-input">{t("tryforfree.lastName")}*</label>
             <input
               type="text"
               id="last-name-input"
-              placeholder="Enter last name..."
+              placeholder={t("tryforfree.enterlastname")}
             />
-            <label htmlFor="designation-input">Designation*</label>
+            <label htmlFor="designation-input">
+              {t("tryforfree.designation")}*
+            </label>
             <input
               type="text"
               id="designation-input"
-              placeholder="Enter designation..."
+              placeholder={t("tryforfree.enterdesignation")}
             />
-            <label htmlFor="email-input">Email*</label>
-            <input type="text" id="email-input" placeholder="Enter email..." />
-            <label htmlFor="institute-input">Organization*</label>
+            <label htmlFor="email-input">{t("tryforfree.email")}*</label>
+            <input
+              type="text"
+              id="email-input"
+              placeholder={t("tryforfree.enteremail")}
+            />
+            <label htmlFor="institute-input">
+              {t("tryforfree.organization")}*
+            </label>
             <input
               type="text"
               id="institute-input"
-              placeholder="Enter organization's name..."
+              placeholder={t("tryforfree.enterorganization")}
             />
-            <label htmlFor="contact-input">Contact number*</label>
+            <label htmlFor="contact-input">{t("tryforfree.contact")}*</label>
             <input
               type="text"
               id="contact-input"
-              placeholder="Enter phone number..."
+              placeholder={t("tryforfree.enterContact")}
             />
-            <label htmlFor="country-input">Country*</label>
+            <label htmlFor="country-input">{t("tryforfree.country")}*</label>
             <input
               type="text"
               id="country-input"
-              placeholder="Enter country..."
+              placeholder={t("tryforfree.entercountry")}
             />
           </div>
           <div className="status">{status}</div>
@@ -120,7 +132,7 @@ const TryForFree = () => {
             }}
             onClick={handleSubmit}
           >
-            Enter
+            {t("tryforfree.enter")}
           </button>
         </div>
         <div

@@ -460,5 +460,27 @@
     "walletAddress": "Endereço da carteira",
     "NFTDescription": "Descrição da NFT",
     "uploadNFTImage": "Carregue a imagem NFT"
+  },
+  "tryforfree": {
+    "firstName": "Primeiro Nome",
+    "enterfirstname": "Digite o primeiro nome...",
+    "lastName": "Último Nome",
+    "enterlastname": "Digite o último nome...",
+    "designation": "Designação",
+    "enterdesignation": "Digite a designação...",
+    "email": "Email",
+    "enteremail": "Digite o email...",
+    "organization": "Organização",
+    "enterorganization": "Digite o nome da organização...",
+    "contact": "Número de Contato",
+    "enterContact": "Digite o número de telefone...",
+    "country": "País",
+    "entercountry": "Digite o país...",
+    "enter": "Entrar",
+    "signup": "Cadastre-se para obter Certificados Gratuitos",
+    "requiredFields": "* campos obrigatórios.",
+    "submitting": "Enviando. Por favor, aguarde...",
+    "thankYou": "Obrigado por escolher o bitmemoir. Nosso representante entrará em contato em breve.",
+    "somethingWentWrong": "Algo deu errado. Por favor, entre em contato conosco pelo email support@beimagine.tech"
   }
 }
