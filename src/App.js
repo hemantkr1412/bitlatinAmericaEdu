@@ -33,7 +33,7 @@ import VerifyWithDetails from "./components/verify/verifyWithDetails";
 // context
 import UserState from "./context/userContext/userState";
 import Protected from "./ProtectedRouter";
-
+import GoogleTagManager from './GoogleTagManager';
 // router
 import { Route, Routes } from "react-router-dom";
 import { HashRouter } from "react-router-dom";
@@ -43,6 +43,7 @@ import { useState } from "react";
 function App() {
   return (
     <>
+      <GoogleTagManager />
       <HashRouter>
         <UserState>
           <Navbar />
