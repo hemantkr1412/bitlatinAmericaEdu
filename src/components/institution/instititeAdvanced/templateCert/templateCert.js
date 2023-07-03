@@ -46,24 +46,25 @@ const TemplateCert = (props) => {
         />
         {templateData.variables.map((variable, index) => {
           if (variable.type === "qr") {
+            let varHeight = parseFloat(variable.height);
             return (
               <QRCode
                 size={256}
                 bgColor={"rgba(0, 0, 0, 0)"}
                 fgColor={variable.color}
                 style={{
-                  width: variable.width + "%",
-                  height: variable.height + "%",
+                  width: varHeight + "%",
+                  height: varHeight + "%",
                   position: "absolute",
                   top:
                     parseFloat(
-                      parseFloat(variable.y_pos) -
-                        parseFloat(variable.height) / 2
+                      parseFloat(variable.y_pos) - parseFloat(varHeight) / 2
                     ) + "%",
                   left:
                     parseFloat(
                       parseFloat(variable.x_pos) -
-                        parseFloat(variable.width) / 2
+                        parseFloat(varHeight) / 2 -
+                        2.2
                     ) + "%",
                 }}
                 value={"https://bitmemoir.com/verify"}

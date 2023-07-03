@@ -159,9 +159,15 @@ const CertIssue = ({ setView, certData, category }) => {
         <input
           type="file"
           onChange={(e) => {
-            console.log(e.target.files[0]["name"]);
-            setUploadedFile(e.target.files[0]);
-            setUploadedFileName(e.target.files[0]["name"]);
+            const file = e.target.files[0];
+            const fileName = file.name;
+
+            if (fileName.endsWith(".csv")) {
+              setUploadedFile(file);
+              setUploadedFileName(fileName);
+            } else {
+              alert("Please select a valid csv file.");
+            }
           }}
         />
         <h3>

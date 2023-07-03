@@ -25,8 +25,8 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
   const [selectedVariables, setSelectedVariables] = useState([
     {
       name: "qrcode",
-      height: "5",
-      width: "30",
+      height: "15",
+      width: "15",
       x_pos: "0",
       y_pos: "0",
       color: "#000000",
@@ -36,8 +36,8 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
   const [selectedVariablesData, setSelectedVariablesData] = useState([
     {
       name: "qrcode",
-      height: "5",
-      width: "30",
+      height: "15",
+      width: "15",
       x_pos: "50",
       y_pos: "50",
       color: "#000000",
@@ -139,12 +139,14 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
   };
 
   const selectImage = (file) => {
-    setUploadedImage(file);
+    const fileName = file.name.replace(/\s+/g, "_");
+    const newFile = new File([file], fileName, { type: file.type });
+    setUploadedImage(newFile);
     let filereader = new FileReader();
     filereader.addEventListener("load", () => {
       setSelectedImage(filereader.result);
     });
-    filereader.readAsDataURL(file);
+    filereader.readAsDataURL(newFile);
   };
 
   return (
@@ -154,7 +156,7 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "50px 20px",
+        padding: "0px 0px",
       }}
       id="tempate-creater-container"
     >
@@ -312,22 +314,11 @@ const DragVariable = ({
   const [imageHeight, setimageHeight] = useState(100);
 
   const startingPositionX = 50 - parseFloat(variable.width) / 2 + "%";
-  const startingPositionY = 50 - parseFloat(variable.height) + "%";
+  const startingPositionY = 50 - parseFloat(variable.height) / 2 + "%";
 
   useEffect(() => {
-    console.log(imageHeight);
-    console.log(
-      -imageHeight / 2 + (parseFloat(variable.height) * imageHeight) / 200
-    );
-    console.log(
-      imageHeight / 2 - (parseFloat(variable.height) * imageHeight) / 200
-    );
     try {
       setimageHeight(
-        document.getElementById("cert-creator-preview").offsetHeight
-      );
-      console.log(
-        "Image height---",
         document.getElementById("cert-creator-preview").offsetHeight
       );
     } catch (err) {
@@ -355,6 +346,12 @@ const DragVariable = ({
       Math.round(
         (50 + (parseFloat(data.y) / parseFloat(imageHeight)) * 100) * 100
       ) / 100;
+
+    console.log(
+      imageHeight,
+      imageWidth,
+      document.getElementById("qr-code").innerWidth
+    );
 
     let newVariablesData = [];
     selectedVariablesData.map((myvariable) => {
@@ -399,6 +396,9 @@ const DragVariable = ({
   return (
     <Draggable
       handle="#handle"
+      style={{
+        padding: "0px",
+      }}
       bounds={{
         left: -imageWidth / 2 + (parseFloat(variable.width) * imageWidth) / 200,
         top:
@@ -414,9 +414,14 @@ const DragVariable = ({
       <div
         style={{
           position: "absolute",
+          margin: "0px",
+          padding: "0px",
           top: startingPositionY,
           left: startingPositionX,
-          width: variable.width + "%",
+          width:
+            variable.type === "qr"
+              ? parseInt((imageHeight * variable.height) / 100) + "px"
+              : variable.width + "%",
           height: variable.height + "%",
         }}
       >
@@ -424,13 +429,14 @@ const DragVariable = ({
           sx={{
             backgroundColor: "transparent",
             color: "transparent",
-            padding: "20px",
+            padding: "0px",
             position: "relative",
+            border: "1px solid transparent",
 
             "&:hover": {
               backgroundColor: "rgba(255, 255, 255, 0.5)",
               border: "1px solid black",
-              borderRadius: "10px",
+              borderRadius: "0px",
               color: "black",
             },
           }}
@@ -453,6 +459,7 @@ const DragVariable = ({
                 size={256}
                 bgColor={"rgba(0, 0, 0, 0)"}
                 fgColor={variable.color}
+                id="qr-code"
                 style={{
                   width:
                     (parseFloat(variable.height) * imageHeight) / 100 + "px",
@@ -469,37 +476,44 @@ const DragVariable = ({
             />
           </div>
           <div style={{ position: "absolute", top: "-20px", left: "0px" }}>
-            <TextIncreaseIcon
-              fontSize="small"
-              onClick={() => changeVariableAttribute("height", 1)}
-            />
-            <TextDecreaseIcon
-              fontSize="small"
-              onClick={() => changeVariableAttribute("height", -1)}
-            />
+            {variable.type !== "qr" && (
+              <TextIncreaseIcon
+                fontSize="small"
+                onClick={() => changeVariableAttribute("height", 1)}
+              />
+            )}
+
+            {variable.type !== "qr" && (
+              <TextDecreaseIcon
+                fontSize="small"
+                onClick={() => changeVariableAttribute("height", -1)}
+              />
+            )}
             <FormatColorFillIcon
               fontSize="small"
               onClick={() => setIsColorPicker(!isColorPicker)}
             />
           </div>
-          <div
-            style={{
-              position: "absolute",
-              top: "20px",
-              left: "-20px",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <AddCircleOutlineIcon
-              fontSize="small"
-              onClick={() => changeVariableAttribute("width", 1)}
-            />
-            <RemoveCircleOutlineIcon
-              fontSize="small"
-              onClick={() => changeVariableAttribute("width", -1)}
-            />
-          </div>
+          {variable.type !== "qr" && (
+            <div
+              style={{
+                position: "absolute",
+                top: "20px",
+                left: "-20px",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <AddCircleOutlineIcon
+                fontSize="small"
+                onClick={() => changeVariableAttribute("width", 1)}
+              />
+              <RemoveCircleOutlineIcon
+                fontSize="small"
+                onClick={() => changeVariableAttribute("width", -1)}
+              />
+            </div>
+          )}
 
           <div
             style={{
@@ -510,26 +524,28 @@ const DragVariable = ({
               flexDirection: "column",
             }}
           >
-            <HighlightOffIcon
-              onClick={() => {
-                const thisIndex = selectedVariables.indexOf(variable);
-                console.log(thisIndex);
-                let newVariables = [];
-                let newVariablesData = [];
-                selectedVariables.map((myVariable, index) => {
-                  if (index !== thisIndex) {
-                    newVariables.push(myVariable);
-                  }
-                  setSelectedVariables(newVariables);
-                });
-                selectedVariablesData.map((myVariable, index) => {
-                  if (index !== thisIndex) {
-                    newVariablesData.push(myVariable);
-                  }
-                  setSelectedVariablesData(newVariables);
-                });
-              }}
-            />
+            {variable.type !== "qr" && (
+              <HighlightOffIcon
+                onClick={() => {
+                  const thisIndex = selectedVariables.indexOf(variable);
+                  console.log(thisIndex);
+                  let newVariables = [];
+                  let newVariablesData = [];
+                  selectedVariables.map((myVariable, index) => {
+                    if (index !== thisIndex) {
+                      newVariables.push(myVariable);
+                    }
+                    setSelectedVariables(newVariables);
+                  });
+                  selectedVariablesData.map((myVariable, index) => {
+                    if (index !== thisIndex) {
+                      newVariablesData.push(myVariable);
+                    }
+                    setSelectedVariablesData(newVariables);
+                  });
+                }}
+              />
+            )}
           </div>
         </Box>
         {isColorPicker && (
