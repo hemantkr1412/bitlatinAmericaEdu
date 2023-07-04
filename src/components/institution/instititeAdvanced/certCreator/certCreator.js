@@ -140,13 +140,17 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
 
   const selectImage = (file) => {
     const fileName = file.name.replace(/\s+/g, "_");
-    const newFile = new File([file], fileName, { type: file.type });
-    setUploadedImage(newFile);
-    let filereader = new FileReader();
-    filereader.addEventListener("load", () => {
-      setSelectedImage(filereader.result);
-    });
-    filereader.readAsDataURL(newFile);
+    if (fileName.endsWith(".png")) {
+      const newFile = new File([file], fileName, { type: file.type });
+      setUploadedImage(newFile);
+      let filereader = new FileReader();
+      filereader.addEventListener("load", () => {
+        setSelectedImage(filereader.result);
+      });
+      filereader.readAsDataURL(newFile);
+    } else {
+      alert("Please select a valid image file with png format.");
+    }
   };
 
   return (
@@ -403,7 +407,12 @@ const DragVariable = ({
         left: -imageWidth / 2 + (parseFloat(variable.width) * imageWidth) / 200,
         top:
           -imageHeight / 2 + (parseFloat(variable.height) * imageHeight) / 200,
-        right: imageWidth / 2 - (parseFloat(variable.width) * imageWidth) / 200,
+        right:
+          variable.type === "qr"
+            ? imageWidth / 2 -
+              (parseFloat(variable.height) * imageHeight) / 200 +
+              parseFloat(variable.height)
+            : imageWidth / 2 - (parseFloat(variable.width) * imageWidth) / 200,
         bottom:
           imageHeight / 2 - (parseFloat(variable.height) * imageHeight) / 200,
       }}
