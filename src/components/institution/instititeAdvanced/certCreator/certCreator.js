@@ -114,6 +114,10 @@ const CertCreator = ({ setIsTemplateCreator, setSelectedTemplate, sector }) => {
   // const myArray = JSON.parse(variableOptions2)
 
   const handleNext = async () => {
+    if (templateName.length === 0 || templateName === " ") {
+      alert("Please enter template name.");
+      return;
+    }
     setIsLoading(true);
     await templateApi({
       request_type: "create",
