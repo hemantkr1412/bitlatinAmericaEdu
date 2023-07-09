@@ -67,6 +67,7 @@ const VerifyWithDetails = () => {
               nftData={nftData}
               contractAddress={contractAddress}
               tokenId={tokenId}
+              timeStamp={timeStamp}
             />
           </>
         ) : (
@@ -85,7 +86,7 @@ const VerifyWithDetails = () => {
 export default VerifyWithDetails;
 
 const VerifiedDetails = (props) => {
-  const { userData, nftData, contractAddress, tokenId } = props;
+  const { userData, nftData, contractAddress, tokenId ,timeStamp} = props;
   const [hasAnimated, setHasAnimated] = useState(false);
   const { t } = useTranslation();
   useEffect(() => {
@@ -129,7 +130,7 @@ const VerifiedDetails = (props) => {
             ) {
               return (
                 <span key={item}>
-                  {item}: {nftData[item]}
+                  {/* {item}: {nftData[item]} */}
                 </span>
               );
             } else return null;
