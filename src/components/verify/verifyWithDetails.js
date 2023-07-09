@@ -15,6 +15,7 @@ const VerifyWithDetails = () => {
   const [userData, setUserData] = useState(null);
   const [nftData, setNftData] = useState(null);
   const [hasData, setHasData] = useState(false);
+  const [timeStamp, setTimeStamp] = useState(null);
   const { t } = useTranslation();
   useEffect(() => {
     verify();
@@ -29,6 +30,12 @@ const VerifyWithDetails = () => {
           setIsVerified(true);
           setUserData(res["user_data"]);
           setNftData(res["nft_data"]);
+             fetch(res["nft_data"]["metadata_uri"]).then((res) => {
+            res.json().then((data) => {
+              console.log(data.timeStamp);
+              setTimeStamp(data.timeStamp);
+            });
+          });
         } else {
           setIsVerified(false);
         }
@@ -100,7 +107,9 @@ const VerifiedDetails = (props) => {
             {t("VerifyDetails.Token_Id")} {tokenId}
           </h4>
           <h4 style={{ width: "100%", textAlign: "center", margin: "2.5px" }}>
-            20 Jan., 2023 | 16:45
+            {
+              timeStamp ? `Issued on: ${timeStamp.slice(0,19) }` : null
+            }
           </h4>
           <h2 style={{ textDecoration: "underline" }}>
             {t("VerifyDetails.IssuedBy")}
