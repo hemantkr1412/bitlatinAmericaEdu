@@ -228,21 +228,22 @@ const LoadingPage = ({ status, setView }) => {
         margin: "auto",
       }}
     >
-      {status === "Issuing certificates..." && (
+      {/* {status === "Issuing certificates..." && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
           open={true}
         >
           <CircularProgress color="inherit" />
         </Backdrop>
-      )}
-      <h3>{status}</h3>
-      {status === "Issuing certificates..." && (
+      )} */}
+      <h4>{t("dNFT.OderhasbeenSubmittedPleaseCheckinFewMinutes")}</h4>
+      {/* <h3>{status}</h3> */}
+      {/* {status === "Issuing certificates..." && ( */}
         <h4>{t("Institutions.certIssue.headingCloseWindow")}</h4>
-      )}
-      {status !== "Issuing certificates..." && (
+      {/* )} */}
+      {/* {status == "Issuing certificates..." && ( */}
         <button onClick={() => setView("education")}>OK</button>
-      )}
+      {/* )} */}
     </div>
   );
 };
