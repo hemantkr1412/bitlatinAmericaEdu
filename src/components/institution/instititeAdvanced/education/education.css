@@ -1,39 +1,95 @@
 .educationSector {
-  height: "100%";
-  min-height: 80vh;
-  width: 100%;
+	height: "100%";
+	min-height: 80vh;
+	width: 100%;
 }
 
 .educationnavbutton {
-  /* background-color: var(--darkshade1); */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+	/* background-color: var(--darkshade1); */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 }
 
 .educationnavbutton:hover {
-  background-color: var(--secondary);
-  color: var(--primary);
+	background-color: var(--secondary);
+	color: var(--primary);
 }
 
 .educationsidebar {
-  background-color: var(--darkshade2);
-  height: "100%";
-  padding: "10px";
+	background-color: var(--darkshade2);
+	height: "100%";
+	padding: "10px";
 }
 
 .educationsectorsidebar::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 
 .templateselector:hover {
-  transform: scale(1.1);
-  animation: scaleup 0.5s linear;
-  box-shadow: 0px 0px 10px 2px white;
+	transform: scale(1.1);
+	animation: scaleup 0.5s linear;
+	box-shadow: 0px 0px 10px 2px white;
 }
 
 .educationmainpage::-webkit-scrollbar {
-  display: none;
+	display: none;
+}
+.orderlist-container {
+	min-width: 60%;
+	border-collapse: collapse;
+}
+.orderlist {
+	text-align: center;
+}
+.orderlist > td,
+th {
+	padding: 1em;
+	border-bottom: white solid 1px;
+}
+.orderlist-action-btn {
+	margin: auto;
+	border: none;
+	background-color: #23023d;
+	padding: 0.5em;
+	width: 5em;
+	border-radius: 0.5em;
+	color: white;
+	animation: none;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.orderlist-action-btn:hover {
+	background-color: ghostwhite;
+	color: black;
+}
+.orderlist-nftlink {
+	display: inline-block;
+	color: white;
+	height: 2em;
+	width: 2em;
+	border-radius: 50%;
+	line-height: 2em;
+}
+.orderlist-nftlink:hover {
+	background-color: #6d08ba;
+}
+.orders-container {
+	display: grid;
+	grid-template-columns: auto auto;
+	text-align: center;
+	gap: 2em;
+	padding: 2em;
+}
+.orders {
+	cursor: pointer;
+	padding: 2em;
+}
+.orders:hover {
+	background-color: var(--primary);
+}
+.orders.activeOrder {
+	background-color: var(--primary);
 }
