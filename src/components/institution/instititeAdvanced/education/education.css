@@ -12,7 +12,12 @@
 	justify-content: center;
 	text-align: center;
 }
+.listHeader{
+	display: flex;
+	width: 100%;
+	justify-content: space-around;
 
+}
 .educationnavbutton:hover {
 	background-color: var(--secondary);
 	color: var(--primary);

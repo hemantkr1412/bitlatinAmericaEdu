@@ -5,7 +5,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import Subscription from "../subscription/subscription";
 import { useTranslation } from "react-i18next";
-const CertIssue = ({ setView, certData, category }) => {
+const CertIssue = ({ setView, certData, category,setCategory }) => {
   const user = useContext(UserContext);
   const [certNumber, setCertNumber] = useState(0);
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -122,7 +122,7 @@ const CertIssue = ({ setView, certData, category }) => {
   if (isSubscription)
     return <Subscription back={() => setIsSubscription(false)} />;
 
-  if (isLoading) return <LoadingPage status={status} setView={setView} />;
+  if (isLoading) return <LoadingPage status={status} setView={setView} setCategory={setCategory}/>;
 
   return (
     <div
@@ -215,7 +215,7 @@ const CertIssue = ({ setView, certData, category }) => {
 
 export default CertIssue;
 
-const LoadingPage = ({ status, setView }) => {
+const LoadingPage = ({ status, setView,setCategory }) => {
   const { t } = useTranslation();
   return (
     <div
@@ -242,7 +242,10 @@ const LoadingPage = ({ status, setView }) => {
         <h4>{t("Institutions.certIssue.headingCloseWindow")}</h4>
       {/* )} */}
       {/* {status == "Issuing certificates..." && ( */}
-        <button onClick={() => setView("education")}>OK</button>
+        <button onClick={() => {
+          setView("education")
+          setCategory("orders")
+          } }>OK</button>
       {/* )} */}
     </div>
   );

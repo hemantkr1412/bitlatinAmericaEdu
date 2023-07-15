@@ -257,7 +257,19 @@
       "more": "Mais",
       "selectTemplate": "Selecione modelo",
       "selectTemplatePlaceholder": "Selecione um modelo pronto para fazer na seção de modelos",
-      "or": "OU"
+      "or": "OU",
+      "orders":{
+        "retry":"Tentar novamente",
+        "refresh":"Atualizar",
+        "orders":"Pedidos",
+        "issued":"Emitidos",
+        "pending":"Pendentes",
+        "failed":"Falhou",
+        "loading":"carregando...",
+        "No_certificate_found":"Certificado não encontrado",
+        "Order":"Pedido",
+        "RecipientList":"Lista de destinatários"
+        }
     },
     "templateCert": {
       "enterPreviewValue": "Insira valores de visualização",

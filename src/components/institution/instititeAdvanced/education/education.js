@@ -15,6 +15,7 @@ import UserContext from "../../../../context/userContext/UserContext";
 import { useTranslation } from "react-i18next";
 import { FaClipboardList } from "react-icons/fa";
 import { FiExternalLink } from "react-icons/fi";
+import {getOrderlistAPi,retryCertApi} from '../../../Scripts/apiCalls'
 const Education = ({
 	setView,
 	certData,
@@ -27,60 +28,36 @@ const Education = ({
 	const [isTemplateCreator, setIsTemplateCreator] = useState(false);
 	const [selectedTemplate, setSelectedTemplate] = useState(certData);
 	const { t } = useTranslation();
-	const [orderList, setOrderList] = useState([]);
+	const [orderList, setOrderList] = useState([[]]);
 	const [orderIndex, setOrderIndex] = useState(0);
+	const [lengthOrderList,setLengthOrderList] = useState(0)
+	const [refresh,setResfresh] = useState(true)
+	const [loading,setloading] = useState(false)
+	const [selectedOption, setSelectedOption] = useState("Pending");
 	useEffect(() => {
-		getOrderList();
-	}, []);
-	function getOrderList() {
-		const url = "https://www.bitmemoir.org/getOrderlist";
-		const requestOptions = {
-			method: "POST",
-			body: JSON.stringify({
-				user_address: "0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A",
-			}),
-		};
-		fetch(url, requestOptions)
-			.then((response) => response.json)
-			.then((data) => setOrderList(data))
-			.catch((error) => console.error(error));
-	}
-	// const orders = [
-	// 	[
-	// 		{
-	// 			id: 494,
-	// 			user: "0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A",
-	// 			template: 212,
-	// 			token_id: 1,
-	// 			recipient: "0xc56c014E29C06260907058157Bd25d03c42e95B5",
-	// 			email: "radhika@beimagine.tech",
-	// 			variable_values: {
-	// 				"Student Name": " Radhika Mahajan",
-	// 			},
-	// 			image: "https://bitmemoir.s3.amazonaws.com/static/0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A/certificates/494.png",
-	// 			metadata:
-	// 				"https://bitmemoir.s3.amazonaws.com/static/0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A/certificates/494.json",
-	// 			isMinted: false,
-	// 		},
-	// 	],
-	// 	[
-	// 		{
-	// 			id: 495,
-	// 			user: "0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A",
-	// 			template: 212,
-	// 			token_id: 2,
-	// 			recipient: "0xC2F5b3ec45AF681cB80Fc569Aa1A44b9589CC808",
-	// 			email: "hemant@beimagine.tech",
-	// 			variable_values: {
-	// 				"Student Name": "Hemant Kumar",
-	// 			},
-	// 			image: "https://bitmemoir.s3.amazonaws.com/static/0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A/certificates/495.png",
-	// 			metadata:
-	// 				"https://bitmemoir.s3.amazonaws.com/static/0x3fCc3FE4fAFdD07De8FA3851e23dc122371c078A/certificates/495.json",
-	// 			isMinted: false,
-	// 		},
-	// 	],
-	// ];
+		setloading(true)
+		getOrderlistAPi(
+			{user_address: user.userAccount}
+		).then((res) => {
+			console.log("-------------------Get Order--------------------",res);
+			setOrderList(res)
+			let length = res.length;
+			length === 0 ? setLengthOrderList(0) :setLengthOrderList(length)
+			length !== 0 && setOrderIndex(length-1)
+			setloading(false)
+
+		  })
+		  .catch((err) => {
+			console.log(err);
+	
+		  });
+
+		
+	}, [category,refresh]);
+
+
+
+
 	const navbuttons = [
 		{
 			text: "Degree Certificates",
@@ -222,23 +199,51 @@ const Education = ({
 							<TemplateContainer subscription="premium" />
 						</>
 					) : (
+						<>
+						<div>
+							<h4>Recent Order</h4>
+							<hr/>
+							
+							{
+							!loading ? (lengthOrderList !==0 ?<div className="orders-container">
+									{orderList[lengthOrderList-1].length !==0 &&<div
+										onClick={() => setOrderIndex(lengthOrderList-1)}
+										className={`${
+											orderIndex === lengthOrderList-1 &&
+											"activeOrder"
+										} orders`}>
+										Order {lengthOrderList}
+									</div>}
+							</div>:<><h4>You don't have any Order</h4></>)
+							:
+							<h4>loading.....</h4>
+							}
+									
+						</div>
+						<h4>Order List</h4>
+						<hr/>
+						{ !loading ?
 						<div className="orders-container">
 							{orderList.map((order, index) => {
 								return (
-									<div
+									order.length!==0 && <div
 										key={index}
 										onClick={() => setOrderIndex(index)}
 										className={`${
 											orderIndex === index &&
 											"activeOrder"
 										} orders`}>
-										Order {index}
+										Order {index+1}
 									</div>
 								);
 							})}
-						</div>
+						</div>:
+						<h4>Loading.....</h4>
+						}
+						</>
 					)}
 				</div>
+				
 			</div>
 		);
 	};
@@ -375,7 +380,7 @@ const Education = ({
 				}}
 				className="educationmainpage">
 				{category === "orders" ? (
-					<OrdersList list={orderList[orderIndex]} />
+					<OrdersList list={orderList[orderIndex]} selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
 				) : (
 					<TemplateCreator />
 				)}
@@ -383,51 +388,164 @@ const Education = ({
 		);
 	};
 
-	const OrdersList = ({ list }) => {
+	const OrdersList = ({ list,selectedOption, setSelectedOption}) => {
+		// Filter for Pending orders
+		const pendingOrders = list.filter((order) => order.status === "Pending");
+	  
+		// Filter for Issued orders
+		const issuedOrders = list.filter((order) => order.status === "Issued");
+	  
+		// Filter for Failed orders
+		const failedOrders = list.filter((order) => order.status === "Failed");
+		// const [selectedOption, setSelectedOption] = useState("Pending");
+		function retryCert(list){
+			console.log(list)
+			if (list.length===0){
+				alert("You don't have Failed Certificate")
+			}else{
+				alert("Order Submitted Again")
+				retryCertApi({
+					certificate_list:JSON.stringify(list)
+				}).then((res) => {
+					console.log("-------------------Minted--------------------",res);
+					alert("Minting Started Please Wait")
+				  })
+				  .catch((err) => {
+					console.log(err);
+					// alert("Something went wrong again")
+				  });
+
+			}
+		}
+
+		const handleOptionChange = (event) => {
+			setSelectedOption(event.target.value);
+		};
+	  
 		return (
-			<>
-				<h1>Orders List</h1>
-				<table className="orderlist-container">
-					<thead>
-						<tr className="orderlist">
-							<th>S.no</th>
-							<th>User</th>
-							<th>{t("Dashboard.contentDashboard.Status")}</th>
-							<th>Action</th>
-							<th>NFT</th>
-						</tr>
-					</thead>
-					<tbody>
-						{list !== undefined &&
-							list.map((order) => {
-								return (
-									<tr className="orderlist" key={order.id}>
-										<td>{order.id}</td>
-										<td>{order.user}</td>
-										<td>{order.isMinted.toString()}</td>
-										<td>
-											{order.isMinted && (
-												<div className="orderlist-action-btn">
-													Retry
-												</div>
-											)}
-										</td>
-										<td>
-											<a
-												href={order.image}
-												className="orderlist-nftlink"
-												target="_blank">
-												<FiExternalLink />
-											</a>
-										</td>
-									</tr>
-								);
-							})}
-					</tbody>
-				</table>
-			</>
+		  <>
+			<h1>{t("Institutions.education.orders.RecipientList")}</h1>
+			<div className="listHeader">
+				<div>
+					<select value={selectedOption} onChange={handleOptionChange}>
+						<option value="Pending">{t("Institutions.education.orders.pending")}</option>
+						<option value="Issued">{t("Institutions.education.orders.issued")}</option>
+						<option value="Failed">{t("Institutions.education.orders.failed")}</option>
+					</select>
+				</div>
+
+				<div style={{
+					display:"flex"
+				}}>
+				<div >
+					<button
+					onClick={
+						()=> {
+							setResfresh(!refresh)
+						}
+					}
+					>
+						{t("Institutions.education.orders.refresh")}
+					</button>
+				</div>
+
+				{
+					selectedOption==="Failed"&&
+					<div style={{
+						marginLeft:"10px"
+					}}>
+						<button
+						onClick={
+							()=>{
+								retryCert(failedOrders)
+							}
+						}	
+						>
+							{t("Institutions.education.orders.retry")}
+						</button>
+					</div>
+				}
+				</div>
+			</div>
+			<table className="orderlist-container">
+			  <thead>
+				<tr className="orderlist">
+				  <th>S.no</th>
+				  <th>User</th>
+				  <th>Token Id</th>
+				  <th>{t("Dashboard.contentDashboard.Status")}</th>
+				  <th>NFT</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				{/* Display Pending orders */}
+
+				{selectedOption ==="Pending" && 
+				(pendingOrders.length !==0 ?
+				pendingOrders.map((order, index) => {
+				  return (
+					<tr className="orderlist" key={order.id}>
+					  <td>{index + 1}</td>
+					  <td>{order.recipient}</td>
+					  <td>{order.token_id}</td>
+					  <td>{order.status}</td>
+					  <td>
+						<a href={order.image} className="orderlist-nftlink" target="_blank">
+						  <FiExternalLink />
+						</a>
+					  </td>
+					</tr>
+				  );
+				}):<h4>{t("Institutions.education.orders.No_certificate_found")}</h4>)
+			}
+	  
+				{/* Display Issued orders */}
+				{selectedOption ==="Issued" && 
+				(issuedOrders.length !==0 ?
+				issuedOrders.map((order, index) => {
+				  return (
+					<tr className="orderlist" key={order.id}>
+					  <td>{index + 1}</td>
+					  <td>{order.recipient}</td>
+					  <td>{order.token_id}</td>
+					  <td>{order.status}</td>
+					  <td>
+						<a href={order.image} className="orderlist-nftlink" target="_blank">
+						  <FiExternalLink />
+						</a>
+					  </td>
+					</tr>
+				  );
+				}):<h4>{t("Institutions.education.orders.No_certificate_found")}</h4>)
+			}
+	  
+				{/* Display Failed orders */}
+				{selectedOption ==="Failed" && 
+				(failedOrders.length !==0 ?
+				failedOrders.map((order, index) => {
+				  return (
+					<tr className="orderlist" key={order.id}>
+					  <td>{index + 1}</td>
+					  <td>{order.recipient}</td>
+					  <td>{order.token_id}</td>
+					  <td>{order.status}</td>
+					  <td>
+						<a href={order.image} className="orderlist-nftlink" target="_blank">
+						  <FiExternalLink />
+						</a>
+					  </td>
+					</tr>
+				  );
+				}):<h4>{t("Institutions.education.orders.No_certificate_found")}</h4>)
+			}
+			  </tbody>
+			</table>
+		  </>
 		);
-	};
+	  };
+	  
+	  
+	  
 	const TemplateCreator = () => {
 		return (
 			<>

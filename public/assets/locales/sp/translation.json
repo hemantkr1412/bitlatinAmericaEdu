@@ -257,7 +257,19 @@
       "more": "Más",
       "selectTemplate": "Seleccionar plantilla",
       "selectTemplatePlaceholder": "Seleccione una plantilla preparada en la sección Plantillas",
-      "or": "o"
+      "or": "o",
+      "orders":{
+        "retry":"Reintentar",
+        "refresh":"Actualizar",
+        "orders":"Órdenes",
+        "issued":"Emitidas",
+        "pending":"Pendientes",
+        "failed":"Fallidas",
+        "loading":"cargando...",
+        "No_certificate_found":"Certificado no encontrado",
+        "Order":"Orden",
+        "RecipientList":"Lista de destinatarios"
+        }
     },
     "templateCert": {
       "enterPreviewValue": "Ingrese los valores de la vista previa",

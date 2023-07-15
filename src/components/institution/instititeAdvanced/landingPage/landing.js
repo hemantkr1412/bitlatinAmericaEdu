@@ -22,7 +22,7 @@ const InstitutesLandingPage = () => {
   const [isSidebar, setIsSidebar] = useState(false);
   const [view, setView] = useState("education");
   const [certData, setCertData] = useState(null);
-  const [category, setCategory] = useState("educational certificates");
+  const [category, setCategory] = useState("educational certificate");
   const { t } = useTranslation();
 
   const [sector, setSector] = useState({
@@ -171,7 +171,7 @@ const InstitutesLandingPage = () => {
                 />
               )}
               {view === "certIssue" && (
-                <CertIssue setView={setView} certData={certData} category={category}/>
+                <CertIssue setView={setView} certData={certData} category={category} setCategory={setCategory} />
               )}
             </div>
           )}
@@ -182,3 +182,4 @@ const InstitutesLandingPage = () => {
 };
 
 export default InstitutesLandingPage;
+

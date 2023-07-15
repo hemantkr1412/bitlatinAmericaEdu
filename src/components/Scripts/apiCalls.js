@@ -320,3 +320,47 @@ export const tryforfreeApi = async (data) => {
     throw Object.assign(new Error("Server error"), { code: 402 });
   return response.response;
 };
+
+export const getOrderlistAPi = async (data) =>{
+  const endpoint = 'getOrderlist'
+  const url = BASE_URL+endpoint
+  console.log(url)
+  let formData = new FormData();
+  Object.keys(data).map((item) => {
+    formData.append(item, data[item]);
+    return null;
+  });
+  const response = await fetch(url, { method: "POST", body: formData })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return "Server error";
+    });
+  if (response.status !== "Success")
+    throw Object.assign(new Error("Server error"), { code: 402 });
+  return response.response;
+  
+}
+
+
+export const retryCertApi = async(data) =>{
+  const endpoint = 'retryCert'
+  const url = BASE_URL+endpoint
+  console.log(url)
+  let formData = new FormData();
+  Object.keys(data).map((item) => {
+    formData.append(item, data[item]);
+    return null;
+  });
+  const response = await fetch(url, { method: "POST", body: formData })
+    .then((res) => {
+      return res.json();
+    })
+    .catch((err) => {
+      return "Server error";
+    });
+  if (response.status !== "Success")
+    throw Object.assign(new Error("Server error"), { code: 402 });
+  return response.response;
+}

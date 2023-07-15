@@ -266,7 +266,20 @@
       "more": "More",
       "selectTemplate": "Select Template",
       "selectTemplatePlaceholder": "Select a ready made template from the templates section",
-      "or": "OR"
+      "or": "OR",
+      "orders":{
+        "retry":"Retry",
+        "refresh":"Refresh",
+        "orders":"Orders",
+        "issued":"Issued",
+        "pending":"Pending",
+        "failed":"Failed",
+        "loading":"loading..",
+        "No_certificate_found":"No Certificate Found",
+        "Order":"Order",
+        "RecipientList":"Recipient List"
+
+      }
     },
     "templateCert": {
       "enterPreviewValue": "Enter Preview Values",
@@ -440,12 +453,12 @@
     "address": "Address",
     "status": "Status",
     "TokenId": "Token Id",
-    "dynamicIssuedSucessfully": "Dynamic NFT Issued Sucessfully",
+    "dynamicIssuedSucessfully": "Dynamic NFT Issued Successfully",
     "CertificateOderSentForApproval": "Certificate Order Sent For Approval",
     "createYourBatch": "Create Your Batch",
     "NumberOfStudents": "Number Of Students",
     "uploadNFTImage": "Upload NFT Image",
-    "OderhasbeenSubmittedPleaseCheckinFewMinutes": "Oder has been Submitted Please Check in Few Minutes",
+    "OderhasbeenSubmittedPleaseCheckinFewMinutes": "Order has been submitted please check in a few minutes",
     "DynamicNFTCertificate": "Dynamic NFT Certificate",
     "CreateNewNFT": "Create New NFT",
     "UpdateNFT": "Update NFT",
