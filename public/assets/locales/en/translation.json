@@ -265,7 +265,7 @@
       "createCustomTemplate": "Create Custom Template",
       "more": "More",
       "selectTemplate": "Select Template",
-      "selectTemplatePlaceholder": "Select a ready made template from the templates section",
+      "selectTemplatePlaceholder": "Select a ready-made template from the templates section",
       "or": "OR",
       "orders":{
         "retry":"Retry",
@@ -349,11 +349,11 @@
   },
   "VerifyDetails": {
     "Verified": "Verified",
-    "Contract_Address": "Contract Address :",
-    "Token_Id": "Token Id :",
+    "Contract_Address": "Contract Address:",
+    "Token_Id": "Token Id:",
     "Download": "Download",
     "IssuedBy": "Issued by:",
-    "Recipient": "Recipient :",
+    "Recipient": "Recipient:",
     "Verifying": "Verifying...",
     "Could_not_Verify": "Could not Verify."
   },
