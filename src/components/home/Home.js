@@ -24,6 +24,7 @@ import Insta from "./assets/instagramlogo.svg";
 import twitter from "./assets/twitter-square-color-icon.svg";
 import Linkidein from "./assets/linkedinlogo.svg";
 import telegram from "./assets/telegram-icon.svg";
+import Youtube from "./assets/YouTubeIconSVG.svg"
 import { useNavigate } from "react-router-dom";
 
 function TabPanel(props) {
@@ -150,6 +151,18 @@ const Home = () => {
             >
               <img
                 src={telegram}
+                alt="FAQLogo"
+                style={{ width: "40px", height: "40px" }}
+              />
+            </a>
+            <hr />
+            <a
+              href="https://www.youtube.com/@bitmemoirlatam"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src={Youtube}
                 alt="FAQLogo"
                 style={{ width: "40px", height: "40px" }}
               />

@@ -35,6 +35,9 @@
 
 .socialcontainer {
   padding: 10px 0px;
+  /* position: relative;
+  display: flex; */
+  /* flex-direction: row; */
 }
 
 .contactcontainer img {

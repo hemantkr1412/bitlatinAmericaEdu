@@ -2,9 +2,10 @@ import "./Footer.css";
 
 import logo from "../assets/logo.png";
 import linkedinlogo from "./assets/linkedinlogo.svg";
-import instagramlogo from "./assets/instagramlogo.svg";
+import instagramlogo from "./assets/instagramIcon.svg";
 import telegramlogo from "./assets/telegram-icon.svg";
 import twitterlogo from "./assets/twitter-square-color-icon.svg";
+import YouTubeIcon from "./assets/YouTubeIconSVG.svg"
 
 const Footer = () => {
   return (
@@ -35,6 +36,9 @@ const Footer = () => {
                   "https://www.linkedin.com/company/bitmemoir-latam/"
                 );
               }}
+              style={{
+                width:"35px",
+              }}
             />
             <img
               src={instagramlogo}
@@ -42,6 +46,10 @@ const Footer = () => {
               onClick={() => {
                 window.open("https://instagram.com/bitmemoir_latam?igshid=YmMyMTA2M2Y=");
               }}
+              style={{
+                marginLeft:"5px",
+              }}
+              
             />
             <img
               src={twitterlogo}
@@ -49,12 +57,33 @@ const Footer = () => {
               onClick={() => {
                 window.open("https://instagram.com/bitmemoir_latam?igshid=YmMyMTA2M2Y=");
               }}
+              style={{
+                marginLeft:"5px",
+                width:"33px",
+                height:"40px"
+              }}
+                     
             />
             <img
               src={telegramlogo}
               alt=""
               onClick={() => {
                 window.open("https://instagram.com/bitmemoir_latam?igshid=YmMyMTA2M2Y=");
+              }}
+              style={{
+                width:"32px",
+                height:"40px",
+                marginLeft:"8px"
+              }}
+            />
+             <img
+              src={YouTubeIcon}
+              alt=""
+              onClick={() => {
+                window.open("https://www.youtube.com/@bitmemoirlatam/featured");
+              }}
+              style={{
+                marginLeft:"8px"
               }}
             />
           </div>
