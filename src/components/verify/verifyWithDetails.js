@@ -92,6 +92,7 @@ const VerifiedDetails = (props) => {
   useEffect(() => {
     setTimeout(() => setHasAnimated(true), 3500);
   });
+  console.log("Data");
 
   return (
     <div className="certDetails">
